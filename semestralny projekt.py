@@ -84,8 +84,8 @@ class Program:
         self.vyber_postavicky()
     def vyber_postavicky(self):
 
-        photo = tkinter.PhotoImage(file=r"auto.png")
-        self.auto = tkinter.Button(x,text='auto', image=photo)
+        self.auto = tkinter.Button(text='auto',)
+        tkinter.Label(photo).place(900,500)
         self.auto.place(x=900,y=500)
     def vyber_hracov(self):
         self.pocethracovs.place_forget()
@@ -97,8 +97,6 @@ class Program:
             self.potvrdit.place_forget()
             canvas.delete("all")
             canvas.create_text(500, 500, text=f'zadajte meno pre {len(self.hraci) + 1}. hráča a vyberte postavicku')
-
-
             self.meno = tkinter.Entry(width=15,)
             self.meno.place(x=500, y=550)
             self.butons()
