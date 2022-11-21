@@ -1,5 +1,5 @@
 import tkinter
-from PIL import Image,ImageTk
+
 class Program:
     def __init__(self):
         canvas.create_text(600,450,text="Víta vás Belo games",font="Arial 40")
@@ -84,10 +84,11 @@ class Program:
         self.vyber_hracov()
         self.vyber_postavicky()
     def vyber_postavicky(self):
-
-
-        self.auto = tkinter.Button(text='auto',)
-        self.auto.place(x=900,y=500)
+        ima=tkinter.PhotoImage(file="auto.png")
+        canvas.create_image(500,900,anchor="nw",image=ima)
+        print("tu som bol")
+      #  self.auto = tkinter.Button(text='auto',)
+        #self.auto.place(x=900,y=500)
     def vyber_hracov(self):
         self.pocethracovs.place_forget()
         if self.q:
