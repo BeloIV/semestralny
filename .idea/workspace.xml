@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d93ce396-f468-4f52-9dd0-da31e3a25eda" name="Changes" comment="neide pil">
-      <change afterPath="$PROJECT_DIR$/pildd.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/semestralny projekt.py" beforeDir="false" afterPath="$PROJECT_DIR$/semestralny projekt.py" afterDir="false" />
     </list>
@@ -27,9 +26,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/main.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ulozisko.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/test.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file:///Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/PIL/Image.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pildd.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/testy.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/PIL/Image.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/semestralny projekt.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
