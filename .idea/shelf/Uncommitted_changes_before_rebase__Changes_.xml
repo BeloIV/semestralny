@@ -1,0 +1,34 @@
+<changelist name="Uncommitted_changes_before_rebase_[Changes]" date="1669409887623" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before rebase [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="furik.png" />
+    <option name="AFTER_PATH" value="furik.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/furik.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="bota.png" />
+    <option name="AFTER_PATH" value="bota.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/bota.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="lod.png" />
+    <option name="AFTER_PATH" value="lod.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/lod.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="klobuk.png" />
+    <option name="AFTER_PATH" value="klobuk.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/klobuk.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="macka.png" />
+    <option name="AFTER_PATH" value="macka.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/macka.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="auto.png" />
+    <option name="AFTER_PATH" value="auto.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/auto.png" />
+  </binary>
+</changelist>

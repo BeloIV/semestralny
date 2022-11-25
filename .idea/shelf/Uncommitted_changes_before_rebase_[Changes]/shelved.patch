@@ -1,0 +1,417 @@
+Index: ulozisko.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"\"\"\n\n        canvas.update()\n        canvas.after(10)\n        zoz=[\"orange\",\"orange\",None,\"orange\",None,\"deeppink\",\"deeppink\",None,\"deeppink\"]\n        for i in zoz:\n\n            canvas.create_rectangle(10, self.y, 110, self.y+ 66)\n            if i !=None:\n                canvas.create_rectangle(86,self.y,110,self.y+66,fill=i)\n            self.y +=66\n            canvas.update()\n            canvas.after(10)\n        canvas.update()\n        canvas.after(10)\n        canvas.create_rectangle(10,self.y,110,self.y+100)\n        self.x +=100\n        zoz=[\"blue\",\"blue\",None,\"blue\",None,None,\"brown\",None,\"brown\"]\n        for i in zoz:\n            canvas.update()\n            canvas.after(10)\n            canvas.create_rectangle(self.x, self.y, self.x+66, self.y+100)\n            if i !=None:\n                canvas.create_rectangle(self.x,self.y+20,self.x+66,self.y,fill=i)\n            self.x +=66\n        canvas.update()\n        canvas.after(10)\n        canvas.create_rectangle(self.x, self.y, self.x+100, self.y + 100)\n\n    def kresli(self):\n    \"\"\"
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ulozisko.py b/ulozisko.py
+--- a/ulozisko.py	(revision 427734b8852da35d892a8fce9fce7a7453764b30)
++++ b/ulozisko.py	(date 1669409346628)
+@@ -28,4 +28,40 @@
+         canvas.create_rectangle(self.x, self.y, self.x+100, self.y + 100)
+ 
+     def kresli(self):
+-    """
+\ No newline at end of file
++    """
++# Imports everything from tkinter
++# and ttk module
++from tkinter import *
++from tkinter.ttk import *
++
++# toplevel window
++root = Tk()
++
++# setting window size
++root.geometry("150x100")
++
++# label widget
++label = Label(root, text="LABEL")
++
++# place in the window
++label.place(relx=0.4, y=5)
++
++# button widgets
++# In command attribute of Button,
++# place_forget() method is passed
++# in the lambda function to temporarily
++# hide the label
++b1 = Button(root, text="hide text",
++            command=lambda: label.place_forget())
++
++b1.place(relx=0.3, y=30)
++
++# the label is placed again
++b2 = Button(root, text="retrieve text",
++            command=lambda: label.place(
++                relx=0.4))
++
++b2.place(relx=0.3, y=50)
++
++# Start the GUI
++root.mainloop()
+\ No newline at end of file
+Index: test.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from tkinter import *\nfrom tkinter.ttk import *\n\n# creating tkinter window\nroot = Tk()\n\n# Adding widgets to the root window\nLabel(root, text='GeeksforGeeks', font=(\n    'Verdana', 15)).pack(side=TOP, pady=10)\n\n# Creating a photoimage object to use image\nphoto = PhotoImage(file=r\"auto.png\")\n\n# here, image option is used to\n# set image on button\nButton(root, text='Click Me !', image=photo).pack(side=TOP)\n\nmainloop()
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/test.py b/test.py
+--- a/test.py	(revision 427734b8852da35d892a8fce9fce7a7453764b30)
++++ b/test.py	(date 1669387356571)
+@@ -14,5 +14,5 @@
+ # here, image option is used to
+ # set image on button
+ Button(root, text='Click Me !', image=photo).pack(side=TOP)
+-
++print(help(root))
+ mainloop()
+\ No newline at end of file
+Index: pildd.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pildd.py b/pildd.py
+--- a/pildd.py	(revision 427734b8852da35d892a8fce9fce7a7453764b30)
++++ b/pildd.py	(date 1669386244814)
+@@ -1,2 +1,35 @@
+ 
++import tkinter
++import random
++
++interval, r = 1000, 20
+ 
++def timer():
++    global x0, y0
++    x0 = random.randrange(r, 380 - r)
++    y0 = random.randrange(r, 260 - r)
++    canvas.coords(kruh, x0 - r, y0 - r, x0 + r, y0 + r)
++    canvas.after(interval, timer)
++
++def klik(event):
++    global skore
++    x, y = event.x, event.y
++    if (x-x0) ** 2 + (y-y0) ** 2 <= r ** 2:
++        skore += 10
++    else:
++        skore -= 1
++    label_skore['text'] = f'skore = {skore}'
++
++canvas = tkinter.Canvas()
++canvas.pack(side='left')
++canvas.bind('<ButtonPress>', klik)
++label_skore = tkinter.Label(text='skore =   ')
++label_skore.pack()
++tkinter.Label(text=f'spomalenie = {interval}').pack()
++tkinter.Label(text=f'velkost = {r}').pack()
++
++kruh = canvas.create_oval(0, 0, 0, 0, fill='light blue')
++skore = 0
++timer()
++
++tkinter.mainloop()
+Index: semestralny projekt.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import tkinter\n\nclass Program:\n    def __init__(self):\n        canvas.create_text(600,450,text=\"Víta vás Belo games\",font=\"Arial 40\")\n        self.novahra=tkinter.Button(text=\"Nová hra\",command=self.zaciatok)\n        self.novahra.place(x=500,y=500)\n        self.rozohratapartia=tkinter.Button(text=\"Uložene hry\")\n        self.rozohratapartia.place(x=600,y=500)\n\n    def start(self):\n        self.startB.place_forget()\n        self.x = self.meno.get()\n        self.hraci.append(self.x)\n        canvas.delete(\"all\")\n        self.meno.place_forget()\n        canvas.delete(\"all\")\n        canvas.create_rectangle(110,110,704,704,)\n        canvas.create_text(402,402,text=\"Belo Games\",font=\"arial 100\")\n        self.x = 10\n        self.y = 110\n        canvas.create_rectangle(10, 10, 804, 804)\n        canvas.update()\n        canvas.after(100)\n        canvas.create_rectangle(self.x, self.y, self.x+100, self.y)\n        zoz = [\"orange\", \"orange\", None, \"orange\", None, \"deeppink\", \"deeppink\", None, \"deeppink\"]\n        for i in zoz:\n            canvas.create_rectangle(10, self.y, 110, self.y + 66)\n            if i != None:\n                canvas.create_rectangle(86, self.y, 110, self.y + 66, fill=i)\n            self.y += 66\n            canvas.update()\n            canvas.after(100)\n\n        canvas.create_rectangle(10, self.y, 110, self.y + 100)\n        self.x += 100\n        zoz = [\"blue\", \"blue\", None, \"blue\", None, None, \"brown\", None, \"brown\"]\n        for i in zoz:\n            canvas.create_rectangle(self.x, self.y, self.x + 66, self.y + 100)\n            if i != None:\n                canvas.create_rectangle(self.x, self.y + 20, self.x + 66, self.y, fill=i)\n            self.x += 66\n            canvas.update()\n            canvas.after(100)\n        canvas.create_rectangle(self.x, self.y, self.x + 100, self.y + 100)\n        self.x += 100\n        zoz=[\"purple\",None,\"purple\",None,None,\"green\",None,\"green\",\"green\",]\n        for i in zoz:\n            canvas.create_rectangle(self.x, self.y,self.x-100, self.y - 66)\n            if i != None:\n                canvas.create_rectangle(self.x-66, self.y, self.x-100, self.y - 66, fill=i)\n            self.y -= 66\n            canvas.update()\n            canvas.after(100)\n        canvas.create_rectangle(self.x, self.y, self.x-100, self.y-100 )\n        self.x -= 100\n        zoz=[\"yellow\",None,\"yellow\",\"yellow\",None,\"red\",\"red\",None,\"red\"]\n        for i in zoz:\n            canvas.create_rectangle(self.x, self.y, self.x - 66, self.y - 100)\n            if i != None:\n                canvas.create_rectangle(self.x, self.y - 20, self.x - 66, self.y, fill=i)\n            self.x -= 66\n            canvas.update()\n            canvas.after(100)\n\n    def butons(self,):\n\n        self.startB = tkinter.Button(text='Štart', command=self.start )\n        self.startB.place(x=500, y=600, )\n\n\n    def zaciatok(self):\n        self.hraci=[]\n        self.novahra.place_forget()\n        self.rozohratapartia.place_forget()\n        canvas.create_text(580,500,text=\"Vyberte pocet hráčov\",font=\"Arial 20\")\n        self.pocethracovs=tkinter.Scale(orient='horizontal', from_=2, to=8, length=200)\n        self.pocethracovs.place(x=500,y=550)\n        self.potvrdit=tkinter.Button(text='Potvrdit', command=self.pocet_hracov,)\n        self.potvrdit.place( y=600, x=500 )\n        self.q=False\n    def pocet_hracov(self):\n        self.pocethracov = self.pocethracovs.get()\n        self.vyber_hracov()\n        self.vyber_postavicky()\n    def vyber_postavicky(self):\n        ima=tkinter.PhotoImage(file=\"auto.png\")\n        canvas.create_image(500,900,anchor=\"nw\",image=ima)\n        print(\"tu som bol\")\n      #  self.auto = tkinter.Button(text='auto',)\n        #self.auto.place(x=900,y=500)\n    def vyber_hracov(self):\n        self.pocethracovs.place_forget()\n        if self.q:\n            self.x = self.meno.get()\n            self.hraci.append(self.x)\n            self.meno.place_forget()\n        if len(self.hraci)==self.pocethracov-1:\n            self.potvrdit.place_forget()\n            canvas.delete(\"all\")\n            canvas.create_text(500, 500, text=f'zadajte meno pre {len(self.hraci) + 1}. hráča a vyberte postavicku')\n            self.meno = tkinter.Entry(width=15,)\n            self.meno.place(x=500, y=550)\n            self.butons()\n\n        elif len(self.hraci)<=self.pocethracov:\n            canvas.delete(\"all\")\n            canvas.create_text(500,500,text=f'zadajte meno pre {len(self.hraci)+1}. hráča')\n            self.meno=tkinter.Entry(width=15)\n            self.meno.place(x=500,y=550)\n            self.q=True\n\n\n\n\n\n\n\n\n\nroot = tkinter.Tk()\nroot.attributes('-fullscreen', True) # make main window full-screen\n\ncanvas = tkinter.Canvas(root, )\ncanvas.pack(fill=tkinter.BOTH, expand=True)\nx=Program()\n\n\ncanvas.mainloop()
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/semestralny projekt.py b/semestralny projekt.py
+--- a/semestralny projekt.py	(revision 427734b8852da35d892a8fce9fce7a7453764b30)
++++ b/semestralny projekt.py	(date 1669409800028)
+@@ -1,7 +1,15 @@
++import time
+ import tkinter
+-
++from PIL import ImageTk, Image
+ class Program:
+     def __init__(self):
++        """Otvori vsetky obrazky postaviciek a spusti vstupne dialogove okno s vyberom moznosti hry."""
++        self.auto = tkinter.PhotoImage(file=r"auto.png")
++        self.bota = tkinter.PhotoImage(file=r"bota.png")
++        self.furik = tkinter.PhotoImage(file=r"furik.png")
++        self.klobuk = tkinter.PhotoImage(file=r"klobuk.png")
++        self.lod = tkinter.PhotoImage(file=r"lod.png")
++        self.macka = tkinter.PhotoImage(file=r"macka.png")
+         canvas.create_text(600,450,text="Víta vás Belo games",font="Arial 40")
+         self.novahra=tkinter.Button(text="Nová hra",command=self.zaciatok)
+         self.novahra.place(x=500,y=500)
+@@ -9,19 +17,19 @@
+         self.rozohratapartia.place(x=600,y=500)
+ 
+     def start(self):
++        """Spusti Vykreslovanie hriacej plochy."""
+         self.startB.place_forget()
+         self.x = self.meno.get()
+         self.hraci.append(self.x)
+         canvas.delete("all")
+         self.meno.place_forget()
+-        canvas.delete("all")
+         canvas.create_rectangle(110,110,704,704,)
+         canvas.create_text(402,402,text="Belo Games",font="arial 100")
+         self.x = 10
+         self.y = 110
+         canvas.create_rectangle(10, 10, 804, 804)
+         canvas.update()
+-        canvas.after(100)
++        canvas.after(10)
+         canvas.create_rectangle(self.x, self.y, self.x+100, self.y)
+         zoz = ["orange", "orange", None, "orange", None, "deeppink", "deeppink", None, "deeppink"]
+         for i in zoz:
+@@ -30,7 +38,7 @@
+                 canvas.create_rectangle(86, self.y, 110, self.y + 66, fill=i)
+             self.y += 66
+             canvas.update()
+-            canvas.after(100)
++            canvas.after(10)
+ 
+         canvas.create_rectangle(10, self.y, 110, self.y + 100)
+         self.x += 100
+@@ -41,7 +49,7 @@
+                 canvas.create_rectangle(self.x, self.y + 20, self.x + 66, self.y, fill=i)
+             self.x += 66
+             canvas.update()
+-            canvas.after(100)
++            canvas.after(10)
+         canvas.create_rectangle(self.x, self.y, self.x + 100, self.y + 100)
+         self.x += 100
+         zoz=["purple",None,"purple",None,None,"green",None,"green","green",]
+@@ -51,7 +59,7 @@
+                 canvas.create_rectangle(self.x-66, self.y, self.x-100, self.y - 66, fill=i)
+             self.y -= 66
+             canvas.update()
+-            canvas.after(100)
++            canvas.after(10)
+         canvas.create_rectangle(self.x, self.y, self.x-100, self.y-100 )
+         self.x -= 100
+         zoz=["yellow",None,"yellow","yellow",None,"red","red",None,"red"]
+@@ -61,36 +69,62 @@
+                 canvas.create_rectangle(self.x, self.y - 20, self.x - 66, self.y, fill=i)
+             self.x -= 66
+             canvas.update()
+-            canvas.after(100)
++            canvas.after(10)
+ 
+     def butons(self,):
+-
++        """Spusti sa na konci vyberu hraco ako vyzva pre zacatie hry"""
+         self.startB = tkinter.Button(text='Štart', command=self.start )
+         self.startB.place(x=500, y=600, )
+ 
+ 
+     def zaciatok(self):
++        """Vyzva pre vyber poctu hracov.
++        a nacitanie mien hracov"""
+         self.hraci=[]
++        self.postavicky=[]
+         self.novahra.place_forget()
+         self.rozohratapartia.place_forget()
+         canvas.create_text(580,500,text="Vyberte pocet hráčov",font="Arial 20")
+         self.pocethracovs=tkinter.Scale(orient='horizontal', from_=2, to=8, length=200)
+         self.pocethracovs.place(x=500,y=550)
+-        self.potvrdit=tkinter.Button(text='Potvrdit', command=self.pocet_hracov,)
+-        self.potvrdit.place( y=600, x=500 )
++        self.show_potvrdit()
+         self.q=False
+     def pocet_hracov(self):
++
+         self.pocethracov = self.pocethracovs.get()
++        self.pocethracovs.place_forget()
+         self.vyber_hracov()
+         self.vyber_postavicky()
++
++
++
+     def vyber_postavicky(self):
+-        ima=tkinter.PhotoImage(file="auto.png")
+-        canvas.create_image(500,900,anchor="nw",image=ima)
+-        print("tu som bol")
+-      #  self.auto = tkinter.Button(text='auto',)
+-        #self.auto.place(x=900,y=500)
++        """"Zobrazi galeriu postaviciek a moznostou vyberu postavicky."""
++        self.potvrdit.place_forget()
++        self.autobut = tkinter.Button(text='auto', image=self.auto,command= self.postavicka_k_hracovi)
++        self.autobut.place(x=900, y=500)
++        self.botabut = tkinter.Button(text='bota', image=self.bota).place(x=1000, y=500)
++        self.furokbut = tkinter.Button(text='Furik', image=self.furik).place(x=1100, y=500)
++        self.klobukbut = tkinter.Button(text='klobuk', image=self.klobuk).place(x=900, y=400)
++        self.lodbut = tkinter.Button(text='lod', image=self.lod).place(x=1000, y=400)
++        self.mackabut = tkinter.Button(text='macka', image=self.macka).place(x=1100, y=400)
++
++
++    def postavicka_k_hracovi(self):
++        self.autobut.place_forget()
++        self.show_potvrdit()
++
++
++
++
++
++    def show_potvrdit(self):
++        self.potvrdit = tkinter.Button(text='Potvrdit', command=self.pocet_hracov, )
++        self.potvrdit.place(y=600, x=500)
++
++
+     def vyber_hracov(self):
+-        self.pocethracovs.place_forget()
++        """Zobratuje Entry label na zadanie mena hraca"""
+         if self.q:
+             self.x = self.meno.get()
+             self.hraci.append(self.x)
+@@ -98,14 +132,15 @@
+         if len(self.hraci)==self.pocethracov-1:
+             self.potvrdit.place_forget()
+             canvas.delete("all")
+-            canvas.create_text(500, 500, text=f'zadajte meno pre {len(self.hraci) + 1}. hráča a vyberte postavicku')
++            self.vyber_postavicky()
++            canvas.create_text(500, 500, text=f'zadajte meno pre {len(self.hraci) + 1}. hráča a vyberte postavicku',font="Arial 20")
+             self.meno = tkinter.Entry(width=15,)
+             self.meno.place(x=500, y=550)
+             self.butons()
+-
+         elif len(self.hraci)<=self.pocethracov:
+             canvas.delete("all")
+-            canvas.create_text(500,500,text=f'zadajte meno pre {len(self.hraci)+1}. hráča')
++            self.vyber_postavicky()
++            canvas.create_text(500,500,text=f'zadajte meno pre {len(self.hraci)+1}. hráča a vyberte postavicku',font="Arial 20")
+             self.meno=tkinter.Entry(width=15)
+             self.meno.place(x=500,y=550)
+             self.q=True
+@@ -114,16 +149,10 @@
+ 
+ 
+ 
+-
+-
+-
+-
+ root = tkinter.Tk()
+ root.attributes('-fullscreen', True) # make main window full-screen
+-
+-canvas = tkinter.Canvas(root, )
+-canvas.pack(fill=tkinter.BOTH, expand=True)
++canvas = tkinter.Canvas(root)
++canvas=tkinter.Canvas()
++canvas.pack(fill=tkinter.BOTH, expand=True,)
+ x=Program()
+-
+-
+ canvas.mainloop()
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"d93ce396-f468-4f52-9dd0-da31e3a25eda\" name=\"Changes\" comment=\"neide pil\">\n      <change afterPath=\"$PROJECT_DIR$/pildd.py\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/semestralny projekt.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/semestralny projekt.py\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Python Script\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"PUSH_AUTO_UPDATE\" value=\"true\" />\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"HighlightingSettingsPerFile\">\n    <setting file=\"file://$PROJECT_DIR$/main.py\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/test.py\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file:///Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/PIL/Image.py\" root0=\"SKIP_INSPECTION\" />\n    <setting file=\"file://$PROJECT_DIR$/pildd.py\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/semestralny projekt.py\" root0=\"FORCE_HIGHLIGHTING\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2HpJogW79jbS7f0wOkNnoN1Svlx\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"settings.editor.selected.configurable\" value=\"vcs.Git\" />\n  </component>\n  <component name=\"RunManager\" selected=\"Python.semestralny projekt\">\n    <configuration name=\"Image\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"semestralny\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/PIL\" />\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"SCRIPT_NAME\" value=\"/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/PIL/Image.py\" />\n      <option name=\"PARAMETERS\" value=\"\" />\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\n      <option name=\"MODULE_MODE\" value=\"false\" />\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\n      <option name=\"INPUT_FILE\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"main\" type=\"PythonConfigurationType\" factoryName=\"Python\" nameIsGenerated=\"true\">\n      <module name=\"semestralny\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/main.py\" />\n      <option name=\"PARAMETERS\" value=\"\" />\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\n      <option name=\"MODULE_MODE\" value=\"false\" />\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\n      <option name=\"INPUT_FILE\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"pildd\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"semestralny\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/pildd.py\" />\n      <option name=\"PARAMETERS\" value=\"\" />\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\n      <option name=\"MODULE_MODE\" value=\"false\" />\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\n      <option name=\"INPUT_FILE\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"semestralny projekt\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"semestralny\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/semestralny projekt.py\" />\n      <option name=\"PARAMETERS\" value=\"\" />\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\n      <option name=\"MODULE_MODE\" value=\"false\" />\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\n      <option name=\"INPUT_FILE\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"test\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"semestralny\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/test.py\" />\n      <option name=\"PARAMETERS\" value=\"\" />\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\n      <option name=\"MODULE_MODE\" value=\"false\" />\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\n      <option name=\"INPUT_FILE\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Python.semestralny projekt\" />\n        <item itemvalue=\"Python.pildd\" />\n        <item itemvalue=\"Python.Image\" />\n        <item itemvalue=\"Python.test\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"d93ce396-f468-4f52-9dd0-da31e3a25eda\" name=\"Changes\" comment=\"\" />\n      <created>1668976267997</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1668976267997</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"neide pil\">\n      <created>1669028872934</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1669028872934</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"neide pil\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"neide pil\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <line-breakpoint enabled=\"true\" suspend=\"THREAD\" type=\"python-line\">\n          <url>file://$PROJECT_DIR$/main.py</url>\n          <line>8</line>\n          <option name=\"timeStamp\" value=\"1\" />\n        </line-breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 427734b8852da35d892a8fce9fce7a7453764b30)
++++ b/.idea/workspace.xml	(date 1669409592112)
+@@ -5,9 +5,18 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="d93ce396-f468-4f52-9dd0-da31e3a25eda" name="Changes" comment="neide pil">
+-      <change afterPath="$PROJECT_DIR$/pildd.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/semestralny.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/semestralny.iml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/auto.png" beforeDir="false" afterPath="$PROJECT_DIR$/auto.png" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/bota.png" beforeDir="false" afterPath="$PROJECT_DIR$/bota.png" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/furik.png" beforeDir="false" afterPath="$PROJECT_DIR$/furik.png" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/klobuk.png" beforeDir="false" afterPath="$PROJECT_DIR$/klobuk.png" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/lod.png" beforeDir="false" afterPath="$PROJECT_DIR$/lod.png" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/macka.png" beforeDir="false" afterPath="$PROJECT_DIR$/macka.png" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pildd.py" beforeDir="false" afterPath="$PROJECT_DIR$/pildd.py" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/semestralny projekt.py" beforeDir="false" afterPath="$PROJECT_DIR$/semestralny projekt.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/ulozisko.py" beforeDir="false" afterPath="$PROJECT_DIR$/ulozisko.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -27,8 +36,9 @@
+   </component>
+   <component name="HighlightingSettingsPerFile">
+     <setting file="file://$PROJECT_DIR$/main.py" root0="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/ulozisko.py" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/test.py" root0="FORCE_HIGHLIGHTING" />
+-    <setting file="file:///Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/PIL/Image.py" root0="SKIP_INSPECTION" />
++    <setting file="file://$PROJECT_DIR$/testy.py" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/pildd.py" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/semestralny projekt.py" root0="FORCE_HIGHLIGHTING" />
+   </component>
+@@ -43,7 +53,13 @@
+   <component name="PropertiesComponent">
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
++    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
++  </component>
++  <component name="RecentsManager">
++    <key name="CopyFile.RECENT_KEYS">
++      <recent name="$PROJECT_DIR$" />
++    </key>
+   </component>
+   <component name="RunManager" selected="Python.semestralny projekt">
+     <configuration name="Image" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+@@ -151,12 +167,31 @@
+       <option name="INPUT_FILE" value="" />
+       <method v="2" />
+     </configuration>
++    <configuration name="ulozisko" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
++      <module name="semestralny" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <option name="SDK_HOME" value="" />
++      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
++      <option name="IS_MODULE_SDK" value="true" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ulozisko.py" />
++      <option name="PARAMETERS" value="" />
++      <option name="SHOW_COMMAND_LINE" value="false" />
++      <option name="EMULATE_TERMINAL" value="false" />
++      <option name="MODULE_MODE" value="false" />
++      <option name="REDIRECT_INPUT" value="false" />
++      <option name="INPUT_FILE" value="" />
++      <method v="2" />
++    </configuration>
+     <recent_temporary>
+       <list>
+         <item itemvalue="Python.semestralny projekt" />
+-        <item itemvalue="Python.pildd" />
++        <item itemvalue="Python.ulozisko" />
+         <item itemvalue="Python.Image" />
+         <item itemvalue="Python.test" />
++        <item itemvalue="Python.pildd" />
+       </list>
+     </recent_temporary>
+   </component>
+Index: .idea/semestralny.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module type=\"PYTHON_MODULE\" version=\"4\">\n  <component name=\"NewModuleRootManager\">\n    <content url=\"file://$MODULE_DIR$\" />\n    <orderEntry type=\"jdk\" jdkName=\"Python 3.10\" jdkType=\"Python SDK\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n  </component>\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/semestralny.iml b/.idea/semestralny.iml
+--- a/.idea/semestralny.iml	(revision 427734b8852da35d892a8fce9fce7a7453764b30)
++++ b/.idea/semestralny.iml	(date 1669395137379)
+@@ -1,7 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <module type="PYTHON_MODULE" version="4">
+   <component name="NewModuleRootManager">
+-    <content url="file://$MODULE_DIR$" />
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/venv" />
++    </content>
+     <orderEntry type="jdk" jdkName="Python 3.10" jdkType="Python SDK" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
