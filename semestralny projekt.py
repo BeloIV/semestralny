@@ -1,6 +1,4 @@
 import tkinter
-
-
 class Program:
     def __init__(self):
         """Otvori vsetky obrazky postaviciek a spusti vstupne dialogove okno s vyberom moznosti hry."""
@@ -188,7 +186,6 @@ class Program:
 root = tkinter.Tk()
 root.attributes('-fullscreen', True)  # make main window full-screen
 canvas = tkinter.Canvas(root)
-
 canvas.pack(fill=tkinter.BOTH, expand=True, )
 x = Program()
 canvas.mainloop()
