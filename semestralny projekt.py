@@ -1,7 +1,9 @@
 import tkinter
 class Program:
     def __init__(self):
-        """Otvori vsetky obrazky postaviciek a spusti vstupne dialogove okno s vyberom moznosti hry."""
+        """
+        Otvori vsetky obrazky postaviciek a spusti vstupne dialogove okno s vyberom moznosti hry.
+        """
         self.pocethracovs = None
         self.meno = None
         self.prva = 1
@@ -76,26 +78,27 @@ class Program:
         self.startB.place(x=500, y=600, )
 
     def zaciatok(self):
-        """Vyzva pre vyber poctu hracov cez scale
-        plus vytvori dict s vsetkmi podstatnymi info o hracovi kedze ide o novu hru"""
+        """
+        Vyzva pre vyber poctu hracov cez scale
+        plus vytvori dict s vsetkmi podstatnymi info o hracovi kedze ide o novu hru
+        """
         self.novahra.place_forget()
         self.rozohratapartia.place_forget()
         canvas.create_text(580, 500, text="Vyberte pocet hráčov", font="Arial 20")
         self.pocethracovs = tkinter.Scale(orient='horizontal', from_=2, to=6, length=200)
         self.pocethracovs.place(x=500, y=550)
         self.show_potvrdit()
-        self.hraci = {"Hrac1": {"meno": "", "postavicka": "", "karticky": [], "Money": 0},
-                      "Hrac2": {"meno": "", "postavicka": "", "karticky": [], "Money": 0},
-                      "Hrac3": {"meno": "", "postavicka": "", "karticky": [], "Money": 0},
-                      "Hrac4": {"meno": "", "postavicka": "", "karticky": [], "Money": 0},
-                      "Hrac5": {"meno": "", "postavicka": "", "karticky": [], "Money": 0},
-                      "Hrac6": {"meno": "", "postavicka": "", "karticky": [], "Money": 0},
-                      "Hrac7": {"meno": "", "postavicka": "", "karticky": [], "Money": 0},
-                      "Hrac8": {"meno": "", "postavicka": "", "karticky": [], "Money": 0},
-                      }
+        self.hraci = {"Hrac1": {"meno": "Hrac 1", "postavicka": "", "karticky": [], "Money": 0},
+                      "Hrac2": {"meno": "Hrac 2", "postavicka": "", "karticky": [], "Money": 0},
+                      "Hrac3": {"meno": "Hrac 3", "postavicka": "", "karticky": [], "Money": 0},
+                      "Hrac4": {"meno": "Hrac 4", "postavicka": "", "karticky": [], "Money": 0},
+                      "Hrac5": {"meno": "Hrac 5", "postavicka": "", "karticky": [], "Money": 0},
+                      "Hrac6": {"meno": "Hrac 6", "postavicka": "", "karticky": [], "Money": 0},}
 
     def vyber_postavicky(self):
-        """"Zobrazi galeriu postaviciek a moznostou vyberu postavicky."""
+        """"
+        Zobrazi galeriu postaviciek a moznostou vyberu postavicky.
+        """
         self.autobut = tkinter.Button(text='auto', image=self.auto, command=lambda: self.postavicka_k_hracovi("auto"))
         self.autobut.place(x=900, y=500)
         self.botabut = tkinter.Button(text='bota', image=self.bota, command=lambda: self.postavicka_k_hracovi("bota"))
@@ -114,14 +117,18 @@ class Program:
         self.prva = 0
 
     def show_potvrdit(self):
-        """Ukaze sa tlacidlo potvrdit s vyzvou na potvrdenie a ulozenie danej veci """
+        """
+        Ukaze sa tlacidlo potvrdit s vyzvou na potvrdenie a ulozenie danej veci
+         """
         self.potvrdit = tkinter.Button(text='Potvrdit', command=self.ukladanie)
         self.potvrdit.place(y=600, x=500)
 
     def ukladanie(self):
-        """Ked je spustena prvy krat zavola funkciu ktora zobrazi galeriu postaviciek
+        """
+        Ked je spustena prvy krat zavola funkciu ktora zobrazi galeriu postaviciek
         a ulozi info ktore sme dostali o pocte hracov
-        ked je spustana znova tak uklada informacie o hracovi ktore si zadal"""
+        ked je spustana znova tak uklada informacie o hracovi ktore si zadal
+        """
         if self.prva == 1:
             self.vyber_postavicky()
             self.prva = None
@@ -143,7 +150,9 @@ class Program:
                 self.vymaz_tlacitka()
 
     def vymaz_tlacitka(self):
-        """Vymaze vsetky zvysne tlacitka a zavola funkciu na zobrazenie tlacidla START"""
+        """
+        Vymaze vsetky zvysne tlacitka a zavola funkciu na zobrazenie tlacidla START
+        """
         self.botabut.place_forget()
         self.autobut.place_forget()
         self.mackabut.place_forget()
@@ -153,8 +162,10 @@ class Program:
         self.butons()
 
     def postavicka_k_hracovi(self, postavicka):
-        """Zmaze prislusny obrazok postavicky, ktora bola vybrana
-        a do dict daneho hraca priradi jej meno"""
+        """
+        Zmaze prislusny obrazok postavicky, ktora bola vybrana
+        a do dict daneho hraca priradi jej meno
+        """
         self.show_potvrdit()
         if postavicka == "auto":
             self.autobut.place_forget()
@@ -172,7 +183,9 @@ class Program:
         self.hraci[hrac]["postavicka"] = str(postavicka)
 
     def vyber_hracov(self):
-        """Zobratuje Entry label na zadanie mena hraca"""
+        """
+        Zobratuje Entry label na zadanie mena hraca
+        """
         self.potvrdit.place_forget()
         canvas.delete("all")
         canvas.create_text(500, 500,
