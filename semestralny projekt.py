@@ -1,9 +1,15 @@
 import tkinter
+from PIL import Image, ImageTk
+import random
+import json
 class Program:
     def __init__(self):
         """
         Otvori vsetky obrazky postaviciek a spusti vstupne dialogove okno s vyberom moznosti hry.
         """
+
+
+        self.karticky = json.load(open('subor.txt'))
         self.pocethracovs = None
         self.meno = None
         self.prva = 1
@@ -22,55 +28,99 @@ class Program:
 
     def start(self):
         """Spusti Vykreslovanie hriacej plochy."""
+
+
         print(self.hraci)
         self.startB.place_forget()
         canvas.create_rectangle(110, 110, 704, 704, )
-        canvas.create_text(402, 402, text="Belo Games", font="arial 100")
+        canvas.create_text(402, 402, text="Belo Games", font="arial 100",angle=45)
         self.x = 10
         self.y = 110
         canvas.create_rectangle(10, 10, 804, 804)
         canvas.update()
         canvas.after(10)
         canvas.create_rectangle(self.x, self.y, self.x + 100, self.y)
-        zoz = ["orange", "orange", None, "orange", None, "deeppink", "deeppink", None, "deeppink"]
-        for i in zoz:
-            canvas.create_rectangle(10, self.y, 110, self.y + 66)
-            if i is not None:
-                canvas.create_rectangle(86, self.y, 110, self.y + 66, fill=i)
-            self.y += 66
-            canvas.update()
-            canvas.after(10)
+        pocitac = 0
+        kam = 1
+        postupnost = self.karticky["postuponost"]
+        print(postupnost)
+        for i in self.karticky["postuponost"]:
 
-        canvas.create_rectangle(10, self.y, 110, self.y + 100)
-        self.x += 100
-        zoz = ["blue", "blue", None, "blue", None, None, "brown", None, "brown"]
-        for i in zoz:
-            canvas.create_rectangle(self.x, self.y, self.x + 66, self.y + 100)
-            if i is not None:
-                canvas.create_rectangle(self.x, self.y + 20, self.x + 66, self.y, fill=i)
-            self.x += 66
+            print(i)
+            if kam == 1:
+                angl = -90
+                anlx = 10
+                angly = 33
+                plusx = 100
+                plusy = 66
+                plusnafarbux = 66
+                plusnafarbuy = 0
+                posunx = 0
+                posuny = 66
+                zatackax = 100
+                zatackay = 0
+                farbax = 100
+                farbay = 66
+            if kam == 2:
+                angl = 0
+                anlx = 33
+                angly = 90
+                plusx = 66
+                plusy = 100
+                plusnafarbux = 0
+                plusnafarbuy = 34
+                farbax = 66
+                farbay = 0
+                posunx = 66
+                posuny = 0
+            elif kam == 3:
+                angl = 90
+                anlx = -10
+                angly = -33
+                plusx = -100
+                plusy = -66
+                plusnafarbux = -66
+                plusnafarbuy = 0
+                zatackax = -100
+                zatackay = 0
+                farbax = -100
+                farbay = -66
+                posunx = 0
+                posuny = -66
+            elif kam == 4:
+                angl = 0
+                anlx = -33
+                angly = -90
+                plusx = -66
+                plusy = -100
+                plusnafarbux = 0
+                plusnafarbuy = -34
+                farbax = -66
+                farbay = 0
+                posunx = -66
+                posuny = 0
+            canvas.create_rectangle(self.x, self.y, self.x + plusx, self.y + plusy)
             canvas.update()
-            canvas.after(10)
-        canvas.create_rectangle(self.x, self.y, self.x + 100, self.y + 100)
-        self.x += 100
-        zoz = ["purple", None, "purple", None, None, "green", None, "green", "green", ]
-        for i in zoz:
-            canvas.create_rectangle(self.x, self.y, self.x - 100, self.y - 66)
-            if i is not None:
-                canvas.create_rectangle(self.x - 66, self.y, self.x - 100, self.y - 66, fill=i)
-            self.y -= 66
-            canvas.update()
-            canvas.after(10)
-        canvas.create_rectangle(self.x, self.y, self.x - 100, self.y - 100)
-        self.x -= 100
-        zoz = ["yellow", None, "yellow", "yellow", None, "red", "red", None, "red"]
-        for i in zoz:
-            canvas.create_rectangle(self.x, self.y, self.x - 66, self.y - 100)
-            if i is not None:
-                canvas.create_rectangle(self.x, self.y - 20, self.x - 66, self.y, fill=i)
-            self.x -= 66
-            canvas.update()
-            canvas.after(10)
+            canvas.after(100)
+            self.karticky[i]["indexod"] = self.x
+            self.karticky[i]["indexdo"] = self.x + plusx
+            self.karticky[i]["indexyod"] = self.y
+            self.karticky[i]["indexydo"] = self.y + plusy
+            if self.karticky[i]["Nakupna cena"] is not None:
+                canvas.create_text(self.x + anlx, self.y + angly, text=(str(self.karticky[i]["Nakupna cena"]) + "$"),
+                                   anchor="center", angle=angl)
+            if self.karticky[i]["Farba"] is not None:
+                canvas.create_rectangle(self.x + plusnafarbux, self.y + plusnafarbuy, self.x + farbax, self.y + farbay,
+                                        fill=self.karticky[i]["Farba"])
+            if pocitac == 8:
+                self.y += posuny + zatackay
+                self.x += zatackax + posunx
+                pocitac = 0
+                kam += 1
+            else:
+                self.y += posuny
+                self.x += posunx
+                pocitac += 1
 
     def butons(self, ):
         """Spusti sa na konci vyberu hraca ako vyzva pre zacatie hry"""
@@ -201,4 +251,8 @@ root.attributes('-fullscreen', True)  # make main window full-screen
 canvas = tkinter.Canvas(root)
 canvas.pack(fill=tkinter.BOTH, expand=True, )
 x = Program()
+
+
+
+
 canvas.mainloop()
