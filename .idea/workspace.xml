@@ -5,13 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d93ce396-f468-4f52-9dd0-da31e3a25eda" name="Changes" comment="neide pil">
-      <change afterPath="$PROJECT_DIR$/karticky.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/napady.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plocha.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/teghdc.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nazvy.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bota.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/furik.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/karticky.py" beforeDir="false" afterPath="$PROJECT_DIR$/karticky.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/klobuk.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lod.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/macka.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/naprstok.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pes.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plocha.py" beforeDir="false" afterPath="$PROJECT_DIR$/plocha.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/semestralny projekt.py" beforeDir="false" afterPath="$PROJECT_DIR$/semestralny projekt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subor.txt" beforeDir="false" afterPath="$PROJECT_DIR$/subor.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teghdc.py" beforeDir="false" afterPath="$PROJECT_DIR$/teghdc.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +42,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SWAP_SIDES_IN_COMPARE_BRANCHES" value="true" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/main.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ulozisko.py" root0="FORCE_HIGHLIGHTING" />
@@ -57,28 +72,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
-  <component name="RunManager" selected="Python.semestralny projekt">
-    <configuration name="Image" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="semestralny" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/PIL" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/PIL/Image.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.plocha">
     <configuration name="karticky" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="semestralny" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -184,13 +178,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="teghdc" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="semestralny" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/teghdc.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.semestralny projekt" />
         <item itemvalue="Python.plocha" />
         <item itemvalue="Python.karticky" />
+        <item itemvalue="Python.teghdc" />
+        <item itemvalue="Python.semestralny projekt" />
         <item itemvalue="Python.pildd" />
-        <item itemvalue="Python.Image" />
       </list>
     </recent_temporary>
   </component>

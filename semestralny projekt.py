@@ -7,32 +7,29 @@ class Program:
         """
         Otvori vsetky obrazky postaviciek a spusti vstupne dialogove okno s vyberom moznosti hry.
         """
-
-
         self.karticky = json.load(open('subor.txt'))
         self.pocethracovs = None
         self.meno = None
         self.prva = 1
         self.pocetulozenych_hracov = 0
-        self.auto = tkinter.PhotoImage(file=r"auto.png")
-        self.bota = tkinter.PhotoImage(file=r"bota.png")
-        self.furik = tkinter.PhotoImage(file=r"furik.png")
-        self.klobuk = tkinter.PhotoImage(file=r"klobuk.png")
-        self.lod = tkinter.PhotoImage(file=r"lod.png")
-        self.macka = tkinter.PhotoImage(file=r"macka.png")
+        self.auto = tkinter.PhotoImage(file=r"Images/auto.png")
+        self.bota = tkinter.PhotoImage(file=r"Images/bota.png")
+        self.furik = tkinter.PhotoImage(file=r"Images/furik.png")
+        self.klobuk = tkinter.PhotoImage(file=r"Images/klobuk.png")
+        self.lod = tkinter.PhotoImage(file=r"Images/lod.png")
+        self.macka = tkinter.PhotoImage(file=r"Images/macka.png")
         canvas.create_text(600, 450, text="Víta vás Belo games", font="Arial 40")
+        vezenie= Image.open(r"Images/vezenie.jpg")
+        self.vezenie= ImageTk.PhotoImage(vezenie)
         self.novahra = tkinter.Button(text="Nová hra", command=self.zaciatok)
         self.novahra.place(x=500, y=500)
         self.rozohratapartia = tkinter.Button(text="Uložené hry")
         self.rozohratapartia.place(x=600, y=500)
-
     def start(self):
         """Spusti Vykreslovanie hriacej plochy."""
-
-
-        print(self.hraci)
         self.startB.place_forget()
         canvas.create_rectangle(110, 110, 704, 704, )
+        # noinspection PyArgumentList
         canvas.create_text(402, 402, text="Belo Games", font="arial 100",angle=45)
         self.x = 10
         self.y = 110
@@ -42,12 +39,12 @@ class Program:
         canvas.create_rectangle(self.x, self.y, self.x + 100, self.y)
         pocitac = 0
         kam = 1
-        postupnost = self.karticky["postuponost"]
-        print(postupnost)
         for i in self.karticky["postuponost"]:
-
-            print(i)
             if kam == 1:
+                textx= 25
+                texty= -25
+                text= "Vezenie"
+                img= self.vezenie
                 angl = -90
                 anlx = 10
                 angly = 33
@@ -62,6 +59,10 @@ class Program:
                 farbax = 100
                 farbay = 66
             if kam == 2:
+                textx = 0
+                texty = 0
+                text = "Vezenie"
+                img = None
                 angl = 0
                 anlx = 33
                 angly = 90
@@ -74,6 +75,7 @@ class Program:
                 posunx = 66
                 posuny = 0
             elif kam == 3:
+                img = None
                 angl = 90
                 anlx = -10
                 angly = -33
@@ -88,6 +90,7 @@ class Program:
                 posunx = 0
                 posuny = -66
             elif kam == 4:
+                img = None
                 angl = 0
                 anlx = -33
                 angly = -90
@@ -116,6 +119,9 @@ class Program:
                 self.y += posuny + zatackay
                 self.x += zatackax + posunx
                 pocitac = 0
+                canvas.create_text(self.x-textx, self.y-texty, text=text)
+                if img != None:
+                    canvas.create_image(self.x-textx, self.y-texty,image=img)
                 kam += 1
             else:
                 self.y += posuny

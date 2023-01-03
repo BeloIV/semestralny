@@ -37,6 +37,11 @@
         "Sanca",
         "Tretia cervena ulica"
     ],
+    "Start": {
+        "Nazov": "\u0160tart",
+        "Text karticka": "Pri prechode poli\u010dkom \u0161tart sa ti prip\u00ed\u0161e 200$",
+        "Hodnota": 200
+    },
     "Prva orazova Ulica": {
         "Nazov": "Dostojevskeho rad",
         "Nakupna cena": 180,
@@ -49,11 +54,7 @@
         "3 domy": 550,
         "4 domy ": 750,
         "Hotel": 950,
-        "Farba": "orange",
-        "indexod": 10,
-        "indexdo": 110,
-        "indexyod": 110,
-        "indexydo": 176
+        "Farba": "orange"
     },
     "Druha orazova Ulica": {
         "Nazov": "\u0160turova ulica",
@@ -67,20 +68,7 @@
         "3 domy": 550,
         "4 domy ": 750,
         "Hotel": 950,
-        "Farba": "orange",
-        "indexod": 10,
-        "indexdo": 110,
-        "indexyod": 176,
-        "indexydo": 242
-    },
-    "Pokladna": {
-        "Nazov": "Pokladna",
-        "Farba": null,
-        "Nakupna cena": null,
-        "indexod": 804,
-        "indexdo": 704,
-        "indexyod": 308,
-        "indexydo": 242
+        "Farba": "orange"
     },
     "Tretia orazova ulica": {
         "Nazov": "Dostojovskeho ulica",
@@ -94,25 +82,7 @@
         "3 domy": 600,
         "4 domy ": 800,
         "Hotel": 1000,
-        "Farba": "orange",
-        "indexod": 10,
-        "indexdo": 110,
-        "indexyod": 308,
-        "indexydo": 374
-    },
-    "zeleznica": {
-        "Nazov": "Zeleznica",
-        "Nakupna cena": 200,
-        "Hypoteka": 100,
-        "Zakladne najomne": 16,
-        "Ak vlastni 2": 50,
-        "Ak vlastni 3": 100,
-        "Ak vlastni 4": 200,
-        "Farba": null,
-        "indexod": 440,
-        "indexdo": 374,
-        "indexyod": 110,
-        "indexydo": 10
+        "Farba": "orange"
     },
     "Prva ruzova ulica": {
         "Nazov": "Vajanskeho nabrezie",
@@ -126,11 +96,7 @@
         "3 domy": 500,
         "4 domy ": 700,
         "Hotel": 900,
-        "Farba": "deeppink",
-        "indexod": 10,
-        "indexdo": 110,
-        "indexyod": 440,
-        "indexydo": 506
+        "Farba": "deeppink"
     },
     "Druha ruzova ulica": {
         "Nazov": "Razusovo nabre\u017eie",
@@ -144,24 +110,7 @@
         "3 domy": 450,
         "4 domy ": 625,
         "Hotel": 750,
-        "Farba": "deeppink",
-        "indexod": 10,
-        "indexdo": 110,
-        "indexyod": 506,
-        "indexydo": 572
-    },
-    "Energeticke zavody": {
-        "Nazov": "Energeticke zavody",
-        "Nakupna cena": 150,
-        "Hypoteka": 75,
-        "Farba": null,
-        "popis": "Ak hr\u00e1\u010d vlastn\u00ed jeden podnik verejn\u00fdch slu\u017eieb, na\u00e1jomn\u00e9 je \u0161tvornasobok hodu obidvoch kociek.Ak hr\u00e1\u010d vlastn\u00ed OBIDVA podniky verejn\u00fdch slu\u017eieb, n\u00e1jomn\u00e9 je desa\u0165nasobok hodu obidvoch kociek. ",
-        "Ak vlastni 1 nasobok": 4,
-        "Ak vlastni obe nasobok": 10,
-        "indexod": 10,
-        "indexdo": 110,
-        "indexyod": 572,
-        "indexydo": 638
+        "Farba": "deeppink"
     },
     "Tretia ruzova ulica": {
         "Nazov": "Spitalska ulica",
@@ -175,11 +124,7 @@
         "3 domy": 450,
         "4 domy ": 625,
         "Hotel": 750,
-        "Farba": "deeppink",
-        "indexod": 10,
-        "indexdo": 110,
-        "indexyod": 638,
-        "indexydo": 704
+        "Farba": "deeppink"
     },
     "Prva svetlomodra ulica": {
         "Nazov": "Zahradnicka ulica",
@@ -193,11 +138,7 @@
         "3 domy": 300,
         "4 domy ": 450,
         "Hotel": 600,
-        "Farba": "lightblue",
-        "indexod": 110,
-        "indexdo": 176,
-        "indexyod": 704,
-        "indexydo": 804
+        "Farba": "lightblue"
     },
     "Druha svetlomodra ulica": {
         "Nazov": "Karad\u017ei\u010dova ulica",
@@ -211,20 +152,7 @@
         "3 domy": 270,
         "4 domy ": 400,
         "Hotel": 550,
-        "Farba": "lightblue",
-        "indexod": 176,
-        "indexdo": 242,
-        "indexyod": 704,
-        "indexydo": 804
-    },
-    "Sanca": {
-        "Nazov": "\u0160anca",
-        "Farba": null,
-        "Nakupna cena": null,
-        "indexod": 242,
-        "indexdo": 176,
-        "indexyod": 110,
-        "indexydo": 10
+        "Farba": "lightblue"
     },
     "Tretia svetlomodra ulica": {
         "Nazov": "Dunajska ulica",
@@ -238,41 +166,7 @@
         "3 domy": 270,
         "4 domy ": 400,
         "Hotel": 550,
-        "Farba": "lightblue",
-        "indexod": 308,
-        "indexdo": 374,
-        "indexyod": 704,
-        "indexydo": 804
-    },
-    "zeleznica2": {
-        "Nazov": "Zeleznica",
-        "Nakupna cena": 200,
-        "Hypoteka": 100,
-        "Zakladne najomne": 16,
-        "Ak vlastni 2": 50,
-        "Ak vlastni 3": 100,
-        "Ak vlastni 4": 200,
-        "Farba": null
-    },
-    "Dan200": {
-        "Nazov": "Da\u0148 z pr\u00edmu",
-        "Farba": null,
-        "Nakupna cena": null,
-        "Zakladne najomne": 200,
-        "indexod": 440,
-        "indexdo": 506,
-        "indexyod": 704,
-        "indexydo": 804
-    },
-    "Dan100": {
-        "Nazov": "Da\u0148 z pr\u00edmu",
-        "Farba": null,
-        "Nakupna cena": null,
-        "Zakladne najomne": 100,
-        "indexod": 804,
-        "indexdo": 704,
-        "indexyod": 638,
-        "indexydo": 572
+        "Farba": "lightblue"
     },
     "Prva hneda ulica": {
         "Nazov": "Pansk\u00e1 ulica",
@@ -286,16 +180,7 @@
         "3 domy": 180,
         "4 domy ": 320,
         "Hotel": 450,
-        "Farba": "brown",
-        "indexod": 506,
-        "indexdo": 572,
-        "indexyod": 704,
-        "indexydo": 804
-    },
-    "Pokladna2": {
-        "Nazov": "Pokladna",
-        "Farba": null,
-        "Nakupna cena": null
+        "Farba": "brown"
     },
     "Druha hneda ulica": {
         "Nazov": "Zochova ulica",
@@ -309,11 +194,7 @@
         "3 domy": 90,
         "4 domy ": 160,
         "Hotel": 250,
-        "Farba": "brown",
-        "indexod": 638,
-        "indexdo": 704,
-        "indexyod": 704,
-        "indexydo": 804
+        "Farba": "brown"
     },
     "Prva modra ulica": {
         "Nazov": "Hlavne namestie",
@@ -327,11 +208,7 @@
         "3 domy": 90,
         "4 domy ": 160,
         "Hotel": 250,
-        "Farba": "darkblue",
-        "indexod": 804,
-        "indexdo": 704,
-        "indexyod": 704,
-        "indexydo": 638
+        "Farba": "darkblue"
     },
     "Druha modra ulica": {
         "Nazov": "Obchodna ulica",
@@ -345,11 +222,7 @@
         "3 domy": 90,
         "4 domy ": 160,
         "Hotel": 250,
-        "Farba": "darkblue",
-        "indexod": 804,
-        "indexdo": 704,
-        "indexyod": 572,
-        "indexydo": 506
+        "Farba": "darkblue"
     },
     "Prva zelena ulica": {
         "Nazov": "Einsteinova ulica",
@@ -363,11 +236,7 @@
         "3 domy": 90,
         "4 domy ": 160,
         "Hotel": 250,
-        "Farba": "green",
-        "indexod": 804,
-        "indexdo": 704,
-        "indexyod": 374,
-        "indexydo": 308
+        "Farba": "green"
     },
     "Druha zelena ulica": {
         "Nazov": "Mlynske nivy",
@@ -381,11 +250,7 @@
         "3 domy": 90,
         "4 domy ": 160,
         "Hotel": 250,
-        "Farba": "green",
-        "indexod": 804,
-        "indexdo": 704,
-        "indexyod": 242,
-        "indexydo": 176
+        "Farba": "green"
     },
     "Tretia zelena ulica": {
         "Nazov": "Americke namestie",
@@ -399,11 +264,7 @@
         "3 domy": 90,
         "4 domy ": 160,
         "Hotel": 250,
-        "Farba": "green",
-        "indexod": 804,
-        "indexdo": 704,
-        "indexyod": 176,
-        "indexydo": 110
+        "Farba": "green"
     },
     "Prva zlta ulica": {
         "Nazov": "Florianske namestie",
@@ -417,11 +278,7 @@
         "3 domy": 850,
         "4 domy ": 1025,
         "Hotel": 1200,
-        "Farba": "yellow",
-        "indexod": 704,
-        "indexdo": 638,
-        "indexyod": 110,
-        "indexydo": 10
+        "Farba": "yellow"
     },
     "Druha zlta ulica": {
         "Nazov": "Ko\u0161icka ulica",
@@ -435,11 +292,7 @@
         "3 domy": 800,
         "4 domy ": 975,
         "Hotel": 1150,
-        "Farba": "yellow",
-        "indexod": 572,
-        "indexdo": 506,
-        "indexyod": 110,
-        "indexydo": 10
+        "Farba": "yellow"
     },
     "Tretia zlta ulica": {
         "Nazov": "Ra\u010dianska ulica",
@@ -453,24 +306,7 @@
         "3 domy": 800,
         "4 domy ": 975,
         "Hotel": 1050,
-        "Farba": "yellow",
-        "indexod": 506,
-        "indexdo": 440,
-        "indexyod": 110,
-        "indexydo": 10
-    },
-    "Vodarne": {
-        "Nazov": "Vodarne",
-        "Nakupna cena": 150,
-        "Hypoteka": 75,
-        "Farba": null,
-        "popis": "Ak hr\u00e1\u010d vlastn\u00ed jeden podnik verejn\u00fdch slu\u017eieb, na\u00e1jomn\u00e9 je \u0161tvornasobok hodu obidvoch kociek.Ak hr\u00e1\u010d vlastn\u00ed OBIDVA podniky verejn\u00fdch slu\u017eieb, n\u00e1jomn\u00e9 je desa\u0165nasobok hodu obidvoch kociek. ",
-        "Ak vlastni 1 nasobok": 4,
-        "Ak vlastni obe nasobok": 10,
-        "indexod": 638,
-        "indexdo": 572,
-        "indexyod": 110,
-        "indexydo": 10
+        "Farba": "yellow"
     },
     "Prva cervena ulica": {
         "Nazov": "Palisady",
@@ -484,11 +320,7 @@
         "3 domy": 750,
         "4 domy ": 925,
         "Hotel": 1100,
-        "Farba": "red",
-        "indexod": 374,
-        "indexdo": 308,
-        "indexyod": 110,
-        "indexydo": 10
+        "Farba": "red"
     },
     "Druha cervena ulica": {
         "Nazov": "Vajnorska Ulica",
@@ -502,11 +334,7 @@
         "3 domy": 700,
         "4 domy ": 875,
         "Hotel": 1050,
-        "Farba": "red",
-        "indexod": 308,
-        "indexdo": 242,
-        "indexyod": 110,
-        "indexydo": 10
+        "Farba": "red"
     },
     "Tretia cervena ulica": {
         "Nazov": "\u0160ancova ulica",
@@ -520,10 +348,63 @@
         "3 domy": 700,
         "4 domy ": 875,
         "Hotel": 1050,
-        "Farba": "red",
-        "indexod": 176,
-        "indexdo": 110,
-        "indexyod": 110,
-        "indexydo": 10
+        "Farba": "red"
+    },
+    "Pokladna": {
+        "Nazov": "Poklad\u0148a",
+        "Farba": null,
+        "Nakupna cena": null,
+        "Image": "B_pay.png"
+    },
+    "zeleznica": {
+        "Nazov": "Zeleznica",
+        "Nakupna cena": 200,
+        "Hypoteka": 100,
+        "Zakladne najomne": 16,
+        "Ak vlastni 2": 50,
+        "Ak vlastni 3": 100,
+        "Ak vlastni 4": 200,
+        "Farba": null,
+        "Image": "vlak.png"
+    },
+    "Energeticke zavody": {
+        "Nazov": "Energeticke zavody",
+        "Nakupna cena": 150,
+        "Hypoteka": 75,
+        "Farba": null,
+        "popis": "Ak hr\u00e1\u010d vlastn\u00ed jeden podnik verejn\u00fdch slu\u017eieb, na\u00e1jomn\u00e9 je \u0161tvornasobok hodu obidvoch kociek.Ak hr\u00e1\u010d vlastn\u00ed OBIDVA podniky verejn\u00fdch slu\u017eieb, n\u00e1jomn\u00e9 je desa\u0165nasobok hodu obidvoch kociek. ",
+        "Ak vlastni 1 nasobok": 4,
+        "Ak vlastni obe nasobok": 10,
+        "Image": "elektro.png"
+    },
+    "Sanca": {
+        "Nazov": "\u0160anca",
+        "Farba": null,
+        "Nakupna cena": null,
+        "Image": "otaznik.png"
+    },
+    "Dan200": {
+        "Nazov": "Da\u0148 z pr\u00edmu",
+        "Farba": null,
+        "Nakupna cena": null,
+        "Zakladne najomne": 200,
+        "Image": null
+    },
+    "Dan100": {
+        "Nazov": "Da\u0148 z pr\u00edmu",
+        "Farba": null,
+        "Nakupna cena": null,
+        "Zakladne najomne": 100,
+        "Image": null
+    },
+    "Vodarne": {
+        "NazovNazov": "Vodarne",
+        "Nakupna cena": 150,
+        "Hypoteka": 75,
+        "Farba": null,
+        "popis": "Ak hr\u00e1\u010d vlastn\u00ed jeden podnik verejn\u00fdch slu\u017eieb, na\u00e1jomn\u00e9 je \u0161tvornasobok hodu obidvoch kociek.Ak hr\u00e1\u010d vlastn\u00ed OBIDVA podniky verejn\u00fdch slu\u017eieb, n\u00e1jomn\u00e9 je desa\u0165nasobok hodu obidvoch kociek. ",
+        "Ak vlastni 1 nasobok": 4,
+        "Ak vlastni obe nasobok": 10,
+        "Image": "kohutik.png"
     }
 }
