@@ -1,6 +1,6 @@
-import tkinter
-from tkinter import ttk
 import json
+import tkinter
+
 from PIL import Image, ImageTk
 
 karticky = json.load(open('subor.txt'))
@@ -47,7 +47,6 @@ class Program:
                 self.pokladna2 = pokladna.rotate(0)
 
                 self.pokladna1 = pokladna.rotate(-90)
-
 
                 self.pokladna3 = pokladna.rotate(90)
 
@@ -98,7 +97,7 @@ class Program:
                 sancay = 40
                 pokladnax = 60
                 pokladnay = 33
-                zeleznicax= 60
+                zeleznicax = 60
                 zeleznicay = 33
             if kam == 2:
                 angl = 0
@@ -171,16 +170,16 @@ class Program:
                 canvas.create_text(self.x + anlx, self.y + angly, text=(str(self.karticky[i]["Nakupna cena"]) + "$"),
                                    anchor="center", angle=angl)
             try:
-                if self.karticky[i]["Image"] is not None :
+                if self.karticky[i]["Image"] is not None:
 
                     if i == "zeleznica":
-                        print(type(self.zeleznica1),"zeleznica2")
+                        print(type(self.zeleznica1), "zeleznica2")
                         if kam == 1:
-                            canvas.create_image(self.x + zeleznicax, self.y+zeleznicay, image=self.zeleznica1)
+                            canvas.create_image(self.x + zeleznicax, self.y + zeleznicay, image=self.zeleznica1)
                         elif kam == 2 or kam == 4:
-                            canvas.create_image(self.x + zeleznicax, self.y+zeleznicay, image=self.zeleznica2)
+                            canvas.create_image(self.x + zeleznicax, self.y + zeleznicay, image=self.zeleznica2)
                         elif kam == 3:
-                            canvas.create_image(self.x + zeleznicax, self.y+zeleznicay, image=self.zeleznica3)
+                            canvas.create_image(self.x + zeleznicax, self.y + zeleznicay, image=self.zeleznica3)
                     elif i == "Pokladna":
                         canvas.create_text(self.x + anlx, self.y + angly, text=self.karticky[i]["Nazov"], angle=angl,
                                            anchor="center")
@@ -192,7 +191,7 @@ class Program:
                             canvas.create_image(self.x + pokladnax, self.y + pokladnay, image=self.pokladna3)
                     elif i == "Energeticke zavody":
                         if kam == 1:
-                            canvas.create_image(self.x + 50, self.y+33, image=self.elektro1)
+                            canvas.create_image(self.x + 50, self.y + 33, image=self.elektro1)
                         elif kam == 2 or kam == 4:
                             canvas.create_image(self.x, self.y, image=self.elektro2)
                         elif kam == 3:
@@ -208,21 +207,25 @@ class Program:
                             canvas.create_image(self.x + sancax, self.y + sancay, image=self.sanca3)
                     elif i == "Vodarne":
                         if kam == 1:
-                            canvas.create_image(self.x , self.y, image=self.voda1)
+                            canvas.create_image(self.x, self.y, image=self.voda1)
                         elif kam == 2 or kam == 4:
-                            canvas.create_image(self.x -33, self.y -50, image=self.voda2)
+                            canvas.create_image(self.x - 33, self.y - 50, image=self.voda2)
                         elif kam == 3:
                             canvas.create_image(self.x, self.y, image=self.voda3)
             except:
                 pass
 
             if "Dan" in i:
-                if kam ==2:
-                    canvas.create_text(self.x + anlx, self.y + angly-40, text=f'Daň z\nprímu\nzaplaťe:\n{self.karticky[i]["Zakladne najomne"]} $',angle=angl,
-                                   anchor="center", font="Ariel 15")
-                elif kam ==3:
-                    canvas.create_text(self.x + anlx -40, self.y + angly, text=f'Daň z\nprímu\nzaplaťe:\n{self.karticky[i]["Zakladne najomne"]} $',angle=angl,
-                                   anchor="center", font="Ariel 15")
+                if kam == 2:
+                    canvas.create_text(self.x + anlx, self.y + angly - 40,
+                                       text=f'Daň z\nprímu\nzaplate:\n{self.karticky[i]["Zakladne najomne"]} $',
+                                       angle=angl,
+                                       anchor="center", font="Ariel 15")
+                elif kam == 3:
+                    canvas.create_text(self.x + anlx - 40, self.y + angly,
+                                       text=f'Daň z\nprímu\nzaplate:\n{self.karticky[i]["Zakladne najomne"]} $',
+                                       angle=angl,
+                                       anchor="center", font="Ariel 15")
             if pocitac == 8:
                 self.y += posuny + zatackay
                 self.x += zatackax + posunx
