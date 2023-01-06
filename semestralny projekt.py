@@ -37,6 +37,7 @@ class Program:
 
     def start(self):
         """Spusti Vykreslovanie hriacej plochy."""
+        self.ukladanie()
         self.startB.place_forget()
         canvas.create_rectangle(110, 110, 704, 704, )
         # noinspection PyArgumentList
@@ -264,9 +265,9 @@ class Program:
 
     def ukaz_hracov(self):
         """Ukaže mena a hodnotu majetku hračov """
-        print("hi")
+
         for x, i in enumerate(self.hraci):
-            print(x, i)
+
             images = []  # to hold the newly created image
             image = Image.new('RGBA', (10000, 10000), (65535, 65535, 65535, 127))
             images.append(ImageTk.PhotoImage(image))
@@ -290,11 +291,10 @@ class Program:
             elif self.hraci[i]["postavicka"] == "klobuk":
                 postavicka=canvas.create_image(400, 420,image=self.klobuk)
             canvas.update()
-            canvas.after(2000)
+            canvas.after(1000)
             canvas.delete(ram, text, text1,postavicka)
             if x == self.pocethracov - 1:
                 canvas.delete(ram,ramram)
-
                 break
     def butons(self, ):
         """Spusti sa na konci vyberu hraca ako vyzva pre zacatie hry"""
@@ -308,7 +308,7 @@ class Program:
         """
         self.novahra.place_forget()
         self.rozohratapartia.place_forget()
-        canvas.create_text(580, 500, text="Vyberte pocet hráčov", font="Arial 20")
+        canvas.create_text(580, 500, text="Vyberte počet hráčov", font="Arial 20")
         self.pocethracovs = tkinter.Scale(orient='horizontal', from_=2, to=6, length=200)
         self.pocethracovs.place(x=500, y=550)
         self.show_potvrdit()
@@ -344,7 +344,7 @@ class Program:
         """
         Ukaze sa tlacidlo potvrdit s vyzvou na potvrdenie a ulozenie danej veci
          """
-        self.potvrdit = tkinter.Button(text='Potvrdit', command=self.ukladanie)
+        self.potvrdit = tkinter.Button(text='Potvrdiť', command=self.ukladanie)
         self.potvrdit.place(y=600, x=500)
 
     def ukladanie(self):
@@ -369,6 +369,7 @@ class Program:
                 self.vyber_hracov()
             elif self.pocetulozenych_hracov == self.pocethracov:
                 canvas.delete("all")
+                self.startB.place_forget()
                 self.meno.place_forget()
                 self.potvrdit.place_forget()
                 self.vymaz_tlacitka()
@@ -390,7 +391,10 @@ class Program:
         Zmaze prislusny obrazok postavicky, ktora bola vybrana
         a do dict daneho hraca priradi jej meno
         """
-        self.show_potvrdit()
+        if self.pocetulozenych_hracov == self.pocethracov-1:
+            self.butons()
+        else:
+            self.show_potvrdit()
         if postavicka == "auto":
             self.autobut.place_forget()
         elif postavicka == "bota":
@@ -413,7 +417,7 @@ class Program:
         self.potvrdit.place_forget()
         canvas.delete("all")
         canvas.create_text(500, 500,
-                           text=f'zadajte meno pre '
+                           text=f'Zadajte meno pre '
                                 f'{self.pocetulozenych_hracov + 1}. hráča a vyberte postavicku',
                            font="Arial 20")
         self.meno = tkinter.Entry(width=15, )
