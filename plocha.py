@@ -20,6 +20,7 @@ class Program:
         wifi = Image.open(r"Images/wifi.png")
         wifi = wifi.rotate(45)
         self.wifi = ImageTk.PhotoImage(wifi)
+
         """Spusti Vykreslovanie hriacej plochy."""
         canvas.create_rectangle(110, 110, 704, 704, )
         # noinspection PyArgumentList
