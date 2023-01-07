@@ -19,6 +19,7 @@ class Program:
         self.klobuk = tkinter.PhotoImage(file=r"Images/klobuk.png")
         self.lod = tkinter.PhotoImage(file=r"Images/lod.png")
         self.macka = tkinter.PhotoImage(file=r"Images/macka.png")
+        self.dom = Image.open(r"Images/dom.png")
         canvas.create_text(600, 450, text="Víta vás Belo games", font="Arial 40")
         vezenie = Image.open(r"Images/vezenie.jpg")
         self.vezenie = ImageTk.PhotoImage(vezenie)
@@ -34,6 +35,7 @@ class Program:
         wifi = Image.open(r"Images/wifi.png")
         wifi = wifi.rotate(45)
         self.wifi = ImageTk.PhotoImage(wifi)
+        self.ram = None
 
     def start(self):
         """Spusti Vykreslovanie hriacej plochy."""
@@ -51,7 +53,8 @@ class Program:
         pocitac = 0
         kam = 1
         for i in self.karticky["postuponost"]:
-            if i == "zeleznica":
+            if "zeleznica" in i:
+
                 zeleznica = Image.open(f'Images/{self.karticky[i]["Image"]}')
                 self.zeleznica1 = zeleznica.rotate(-90)
                 self.zeleznica2 = zeleznica.rotate(0)
@@ -59,7 +62,7 @@ class Program:
                 self.zeleznica1 = ImageTk.PhotoImage(self.zeleznica1)
                 self.zeleznica2 = ImageTk.PhotoImage(self.zeleznica2)
                 self.zeleznica3 = ImageTk.PhotoImage(self.zeleznica3)
-            elif i == "Pokladna":
+            elif "Pokladna" in i:
                 pokladna = Image.open(f'Images/{self.karticky[i]["Image"]}')
                 self.pokladna2 = pokladna.rotate(0)
                 self.pokladna1 = pokladna.rotate(-90)
@@ -75,7 +78,7 @@ class Program:
                 self.elektro1 = ImageTk.PhotoImage(self.elektro1)
                 self.elektro2 = ImageTk.PhotoImage(self.elektro2)
                 self.elektro3 = ImageTk.PhotoImage(self.elektro3)
-            elif i == "Sanca":
+            elif "Sanca" in i:
                 sanca = Image.open(f'Images/{self.karticky[i]["Image"]}')
                 self.sanca1 = sanca.rotate(-90)
                 self.sanca2 = sanca.rotate(0)
@@ -168,6 +171,11 @@ class Program:
                 zeleznicax = -33
                 zeleznicay = -50
             canvas.create_rectangle(self.x, self.y, self.x + plusx, self.y + plusy)
+
+            self.karticky[i]["odx"] = self.x
+            self.karticky[i]["ody"] = self.y
+            self.karticky[i]["dox"] = self.x + plusx
+            self.karticky[i]["doy"] = self.y + plusy
             canvas.update()
             canvas.after(100)
             self.karticky[i]["indexod"] = self.x
@@ -182,15 +190,14 @@ class Program:
                                    anchor="center", angle=angl)
             try:
                 if self.karticky[i]["Image"] is not None:
-                    if i == "zeleznica":
-
+                    if "zeleznica" in i:
                         if kam == 1:
                             canvas.create_image(self.x + zeleznicax, self.y + zeleznicay, image=self.zeleznica1)
                         elif kam == 2 or kam == 4:
                             canvas.create_image(self.x + zeleznicax, self.y + zeleznicay, image=self.zeleznica2)
                         elif kam == 3:
                             canvas.create_image(self.x + zeleznicax, self.y + zeleznicay, image=self.zeleznica3)
-                    elif i == "Pokladna":
+                    elif "Pokladna" in i:
                         canvas.create_text(self.x + anlx, self.y + angly, text=self.karticky[i]["Nazov"], angle=angl,
                                            anchor="center")
                         if kam == 1:
@@ -206,7 +213,7 @@ class Program:
                             canvas.create_image(self.x, self.y, image=self.elektro2)
                         elif kam == 3:
                             canvas.create_image(self.x, self.y, image=self.elektro3)
-                    elif i == "Sanca":
+                    elif "Sanca" in i:
                         canvas.create_text(self.x + anlx, self.y + angly, text=self.karticky[i]["Nazov"], angle=angl,
                                            anchor="center")
                         if kam == 1:
@@ -274,28 +281,78 @@ class Program:
             ramram = canvas.create_image(0, 0, image=images[-1], anchor='nw')
             ram = canvas.create_rectangle(300, 300, 500, 500, fill="light blue")
             text = canvas.create_text(400, 350, text=self.hraci[i]["meno"], fill="black", font="Arial 20")
-            text1 = canvas.create_text(400, 370, text=f'Majetok: {self.hraci[i]["Money"]}', fill="black",
+            text1 = canvas.create_text(400, 370, text=f'Majetok: {self.hraci[i]["Money"]} $ ', fill="black",
                                        font="Arial 15")
-
             if self.hraci[i]["postavicka"] == "auto":
-                postavicka=canvas.create_image(400, 420,image=self.auto)
+                postavicka = canvas.create_image(400, 420, image=self.auto)
 
             elif self.hraci[i]["postavicka"] == "bota":
-                postavicka=canvas.create_image(400, 420,image=self.bota)
+                postavicka = canvas.create_image(400, 430, image=self.bota)
             elif self.hraci[i]["postavicka"] == "macka":
-                postavicka=canvas.create_image(400, 420,image=self.macka)
+                postavicka = canvas.create_image(400, 420, image=self.macka)
             elif self.hraci[i]["postavicka"] == "lod":
-                postavicka=canvas.create_image(400, 420,image=self.lod)
+                postavicka = canvas.create_image(400, 420, image=self.lod)
             elif self.hraci[i]["postavicka"] == "furik":
-                postavicka=canvas.create_image(400, 420,image=self.furik)
+                postavicka = canvas.create_image(400, 420, image=self.furik)
             elif self.hraci[i]["postavicka"] == "klobuk":
-                postavicka=canvas.create_image(400, 420,image=self.klobuk)
+                postavicka = canvas.create_image(400, 420, image=self.klobuk)
             canvas.update()
             canvas.after(1000)
-            canvas.delete(ram, text, text1,postavicka)
+            canvas.delete(ram, text, text1, postavicka)
             if x == self.pocethracov - 1:
-                canvas.delete(ram,ramram)
+                canvas.delete(ram, ramram)
                 break
+        self.klik_na_karticku()
+
+    def klik_na_karticku(self):
+
+        canvas.bind('<ButtonPress>', self.klik)
+
+    def klik(self, event):
+        print(self.ram)
+        if self.ram is not None:
+            canvas.delete(self.ram, self.ramram, self.text, self.buttx, self.texxx, self.textnajom)
+        karta = None
+        for i in self.karticky["postuponost"]:
+
+            if self.karticky[i]["odx"] > self.karticky[i]["dox"]:
+                odx = self.karticky[i]["dox"]
+                dox = self.karticky[i]["odx"]
+            else:
+                dox = self.karticky[i]["dox"]
+                odx = self.karticky[i]["odx"]
+            if self.karticky[i]["ody"] > self.karticky[i]["doy"]:
+                ody = self.karticky[i]["doy"]
+                doy = self.karticky[i]["ody"]
+            else:
+                doy = self.karticky[i]["doy"]
+                ody = self.karticky[i]["ody"]
+            if odx <= event.x < dox and ody <= event.y < \
+                    doy:
+                karta = i
+        if karta is not None:
+            images = []  # to hold the newly created image
+            image = Image.new('RGBA', (10000, 10000), (65535, 65535, 65535, 127))
+            images.append(ImageTk.PhotoImage(image))
+            self.ramram = canvas.create_image(0, 0, image=images[-1], anchor='nw')
+            self.ram = canvas.create_rectangle(200, 200, 600, 600, fill=self.karticky[karta]["Farba"])
+
+            if "Sanca" not in karta and "zeleznica2" not in karta and "Energeticke zavody" not in karta and "Vodarne" not in karta:
+                najomne = f'Zakladné nájomne{str(self.karticky[karta]["Zakladne najomne"])}\nNájomné s 1 domom:{str(self.karticky[karta]["1 dom"])} $\nNájomné s 2 domami:{str(self.karticky[karta]["2 domy"])} $\nNájomné s 3 domami:{str(self.karticky[karta]["3 domy"])} $\nNájomné s 4 domami:{str(self.karticky[karta]["4 domy "]) } $\nNájomné s hotelom:{str(self.karticky[karta]["Hotel"])} $\n Cena stavby: {str(self.karticky[karta]["Cena Hotelu"])} $ '
+                self.textnajom = canvas.create_text(400, 300, text=najomne, fill="black", font="Helvetica 15")
+
+
+            self.text = canvas.create_text(405, 220, text=self.karticky[karta]["Nazov"], fill="black", font="Arial 20")
+            self.buttx = canvas.create_rectangle(600, 200, 580, 220, fill="red")
+            self.texxx = canvas.create_text(590, 210, text="x", font="Arial 20", fill="black")
+            canvas.bind('<ButtonPress>', self.zrus_karticku)
+
+    def zrus_karticku(self, event):
+        if 580 < event.x < 600 and 200 < event.y < 220:
+            canvas.delete(self.ram, self.ramram, self.text, self.buttx, self.texxx,self.textnajom)
+            self.ram = None
+        self.klik_na_karticku()
+
     def butons(self, ):
         """Spusti sa na konci vyberu hraca ako vyzva pre zacatie hry"""
         self.startB = tkinter.Button(text='Štart', command=self.start)
@@ -391,7 +448,7 @@ class Program:
         Zmaze prislusny obrazok postavicky, ktora bola vybrana
         a do dict daneho hraca priradi jej meno
         """
-        if self.pocetulozenych_hracov == self.pocethracov-1:
+        if self.pocetulozenych_hracov == self.pocethracov - 1:
             self.butons()
         else:
             self.show_potvrdit()

@@ -1,24 +1,15 @@
-postupnost = ["Prva orazova Ulica", "Druha orazova Ulica", "Pokladna", "Tretia orazova ulica", "zeleznica",
-              "Prva ruzova ulica", "Druha ruzova ulica", "Energeticke zavody", "Tretia ruzova ulica",
-              "Prva svetlomodra ulica",
-              "Druha svetlomodra ulica", "Sanca", "Tretia svetlomodra ulica", "zeleznica", "Dan200", "Prva hneda ulica",
-              "Pokladna", "Druha hneda ulica", "Prva modra ulica",
-              "Dan100", "Sanca", "zeleznica", "Prva zelena ulica", "Pokladna", "Druha svetlomodra ulica",
-              "Tretia zelena ulica", "Prva zlta ulica", "Vodarne", "Druha zlta ulica", "Tretia zlta ulica", "zeleznica",
-              "Prva cervena ulica", "Druha cervena ulica", "Sanca", "Tretia cervena ulica"]
-
 karticky = {
-    "postuponost": ["Prva orazova Ulica", "Druha orazova Ulica", "Pokladna", "Tretia orazova ulica", "zeleznica",
+    "postuponost": ["Prva orazova Ulica", "Druha orazova Ulica", "Pokladna1", "Tretia orazova ulica", "zeleznica1",
                     "Prva ruzova ulica", "Druha ruzova ulica", "Energeticke zavody", "Tretia ruzova ulica",
                     "Prva svetlomodra ulica",
-                    "Druha svetlomodra ulica", "Sanca", "Tretia svetlomodra ulica", "zeleznica", "Dan200",
+                    "Druha svetlomodra ulica", "Sanca1", "Tretia svetlomodra ulica", "zeleznica2", "Dan200",
                     "Prva hneda ulica",
-                    "Pokladna", "Druha hneda ulica", "Prva modra ulica",
-                    "Dan100", "Druha modra ulica", "Sanca", "zeleznica", "Prva zelena ulica", "Pokladna",
+                    "Pokladna2", "Druha hneda ulica", "Prva modra ulica",
+                    "Dan100", "Druha modra ulica", "Sanca2", "zeleznica3", "Prva zelena ulica", "Pokladna3",
                     "Druha zelena ulica",
                     "Tretia zelena ulica", "Prva zlta ulica", "Vodarne", "Druha zlta ulica", "Tretia zlta ulica",
-                    "zeleznica",
-                    "Prva cervena ulica", "Druha cervena ulica", "Sanca", "Tretia cervena ulica"],
+                    "zeleznica4",
+                    "Prva cervena ulica", "Druha cervena ulica", "Sanca3", "Tretia cervena ulica"],
     "Start": {"Nazov": "Štart",
               "Text karticka": "Pri prechode poličkom štart sa ti pripíše 200$",
               "Hodnota": 200},
@@ -292,20 +283,58 @@ karticky = {
                              "4 domy ": 875,
                              "Hotel": 1050,
                              "Farba": "red"},
-    "Pokladna": {"Nazov": "Pokladňa",
-                 "Farba": None,
-                 "Nakupna cena": None,
-                 "Image": r"B_pay.png"},
-    "zeleznica": {"Nazov": "Zeleznica",
-                  "Nakupna cena": 200,
-                  "Hypoteka": 100,
-                  "Zakladne najomne": 16,
-                  "Ak vlastni 2": 50,
-                  "Ak vlastni 3": 100,
-                  "Ak vlastni 4": 200,
+    "Pokladna1": {"Nazov": "Pokladňa",
                   "Farba": None,
-                  "Image": r"vlak.png"
-                  },
+                  "Nakupna cena": None,
+                  "Image": r"B_pay.png"},
+    "Pokladna2": {"Nazov": "Pokladňa",
+                  "Farba": None,
+                  "Nakupna cena": None,
+                  "Image": r"B_pay.png"},
+    "Pokladna3": {"Nazov": "Pokladňa",
+                  "Farba": None,
+                  "Nakupna cena": None,
+                  "Image": r"B_pay.png"},
+    "zeleznica1": {"Nazov": "Zeleznica",
+                   "Nakupna cena": 200,
+                   "Hypoteka": 100,
+                   "Zakladne najomne": 16,
+                   "Ak vlastni 2": 50,
+                   "Ak vlastni 3": 100,
+                   "Ak vlastni 4": 200,
+                   "Farba": None,
+                   "Image": r"vlak.png"
+                   },
+    "zeleznica2": {"Nazov": "Zeleznica",
+                   "Nakupna cena": 200,
+                   "Hypoteka": 100,
+                   "Zakladne najomne": 16,
+                   "Ak vlastni 2": 50,
+                   "Ak vlastni 3": 100,
+                   "Ak vlastni 4": 200,
+                   "Farba": None,
+                   "Image": r"vlak.png"
+                   },
+    "zeleznica3": {"Nazov": "Zeleznica",
+                   "Nakupna cena": 200,
+                   "Hypoteka": 100,
+                   "Zakladne najomne": 16,
+                   "Ak vlastni 2": 50,
+                   "Ak vlastni 3": 100,
+                   "Ak vlastni 4": 200,
+                   "Farba": None,
+                   "Image": r"vlak.png"
+                   },
+    "zeleznica4": {"Nazov": "Zeleznica",
+                   "Nakupna cena": 200,
+                   "Hypoteka": 100,
+                   "Zakladne najomne": 16,
+                   "Ak vlastni 2": 50,
+                   "Ak vlastni 3": 100,
+                   "Ak vlastni 4": 200,
+                   "Farba": None,
+                   "Image": r"vlak.png"
+                   },
     "Energeticke zavody": {"Nazov": "Energeticke zavody",
                            "Nakupna cena": 150,
                            "Hypoteka": 75,
@@ -316,18 +345,30 @@ karticky = {
                            "Ak vlastni obe nasobok": 10,
                            "Image": r"elektro.png"
                            },
-    "Sanca": {"Nazov": "Šanca",
-              "Farba": None,
-              "Nakupna cena": None,
-              "Image": r"otaznik.png"
+    "Sanca1": {"Nazov": "Šanca",
+               "Farba": None,
+               "Nakupna cena": None,
+               "Image": r"otaznik.png"
 
-              },
+               },
+    "Sanca2": {"Nazov": "Šanca",
+               "Farba": None,
+               "Nakupna cena": None,
+               "Image": r"otaznik.png"
+
+               },
+    "Sanca3": {"Nazov": "Šanca",
+               "Farba": None,
+               "Nakupna cena": None,
+               "Image": r"otaznik.png"
+
+               },
     "Dan200": {"Nazov": "Daň z prímu",
-                            "Farba": None,
-                            "Nakupna cena": None,
-                            "Zakladne najomne": 200,
-                            "Image": None
-                            },
+               "Farba": None,
+               "Nakupna cena": None,
+               "Zakladne najomne": 200,
+               "Image": None
+               },
     "Dan100": {"Nazov": "Daň z prímu",
                "Farba": None,
                "Nakupna cena": None,
@@ -346,7 +387,8 @@ karticky = {
                 },
 }
 
-print(karticky)
+for i in karticky:
+    print(karticky[i]["4 domy "])
 import json
 
 with open('subor.txt', 'w') as subor:

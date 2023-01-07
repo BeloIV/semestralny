@@ -2,39 +2,39 @@
     "postuponost": [
         "Prva orazova Ulica",
         "Druha orazova Ulica",
-        "Pokladna",
+        "Pokladna1",
         "Tretia orazova ulica",
-        "zeleznica",
+        "zeleznica1",
         "Prva ruzova ulica",
         "Druha ruzova ulica",
         "Energeticke zavody",
         "Tretia ruzova ulica",
         "Prva svetlomodra ulica",
         "Druha svetlomodra ulica",
-        "Sanca",
+        "Sanca1",
         "Tretia svetlomodra ulica",
-        "zeleznica",
+        "zeleznica2",
         "Dan200",
         "Prva hneda ulica",
-        "Pokladna",
+        "Pokladna2",
         "Druha hneda ulica",
         "Prva modra ulica",
         "Dan100",
         "Druha modra ulica",
-        "Sanca",
-        "zeleznica",
+        "Sanca2",
+        "zeleznica3",
         "Prva zelena ulica",
-        "Pokladna",
+        "Pokladna3",
         "Druha zelena ulica",
         "Tretia zelena ulica",
         "Prva zlta ulica",
         "Vodarne",
         "Druha zlta ulica",
         "Tretia zlta ulica",
-        "zeleznica",
+        "zeleznica4",
         "Prva cervena ulica",
         "Druha cervena ulica",
-        "Sanca",
+        "Sanca3",
         "Tretia cervena ulica"
     ],
     "Start": {
@@ -350,13 +350,58 @@
         "Hotel": 1050,
         "Farba": "red"
     },
-    "Pokladna": {
+    "Pokladna1": {
         "Nazov": "Poklad\u0148a",
         "Farba": null,
         "Nakupna cena": null,
         "Image": "B_pay.png"
     },
-    "zeleznica": {
+    "Pokladna2": {
+        "Nazov": "Poklad\u0148a",
+        "Farba": null,
+        "Nakupna cena": null,
+        "Image": "B_pay.png"
+    },
+    "Pokladna3": {
+        "Nazov": "Poklad\u0148a",
+        "Farba": null,
+        "Nakupna cena": null,
+        "Image": "B_pay.png"
+    },
+    "zeleznica1": {
+        "Nazov": "Zeleznica",
+        "Nakupna cena": 200,
+        "Hypoteka": 100,
+        "Zakladne najomne": 16,
+        "Ak vlastni 2": 50,
+        "Ak vlastni 3": 100,
+        "Ak vlastni 4": 200,
+        "Farba": null,
+        "Image": "vlak.png"
+    },
+    "zeleznica2": {
+        "Nazov": "Zeleznica",
+        "Nakupna cena": 200,
+        "Hypoteka": 100,
+        "Zakladne najomne": 16,
+        "Ak vlastni 2": 50,
+        "Ak vlastni 3": 100,
+        "Ak vlastni 4": 200,
+        "Farba": null,
+        "Image": "vlak.png"
+    },
+    "zeleznica3": {
+        "Nazov": "Zeleznica",
+        "Nakupna cena": 200,
+        "Hypoteka": 100,
+        "Zakladne najomne": 16,
+        "Ak vlastni 2": 50,
+        "Ak vlastni 3": 100,
+        "Ak vlastni 4": 200,
+        "Farba": null,
+        "Image": "vlak.png"
+    },
+    "zeleznica4": {
         "Nazov": "Zeleznica",
         "Nakupna cena": 200,
         "Hypoteka": 100,
@@ -377,7 +422,19 @@
         "Ak vlastni obe nasobok": 10,
         "Image": "elektro.png"
     },
-    "Sanca": {
+    "Sanca1": {
+        "Nazov": "\u0160anca",
+        "Farba": null,
+        "Nakupna cena": null,
+        "Image": "otaznik.png"
+    },
+    "Sanca2": {
+        "Nazov": "\u0160anca",
+        "Farba": null,
+        "Nakupna cena": null,
+        "Image": "otaznik.png"
+    },
+    "Sanca3": {
         "Nazov": "\u0160anca",
         "Farba": null,
         "Nakupna cena": null,
