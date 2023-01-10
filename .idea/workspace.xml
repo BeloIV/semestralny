@@ -136,7 +136,6 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/semestralny projekt.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -190,11 +189,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ukaz hracov" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.semestralny projekt" />
         <item itemvalue="Python.plocha" />
         <item itemvalue="Python.karticky" />
-        <item itemvalue="Python.test" />
-        <item itemvalue="Python.ukaz hracov" />
       </list>
     </recent_temporary>
   </component>
