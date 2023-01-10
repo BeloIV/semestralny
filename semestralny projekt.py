@@ -43,7 +43,6 @@ class Program:
         self.vlak = Image.open(r"Images/vlak2.png")
         self.kohutik = Image.open(r"Images/kohutik2.png")
         self.dan = Image.open(r"Images/dan2.png")
-
         self.ram = None
 
     def start(self):
