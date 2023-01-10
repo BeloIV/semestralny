@@ -1,6 +1,9 @@
-import tkinter
-from PIL import Image, ImageTk
 import json
+import tkinter
+
+from PIL import Image, ImageTk
+
+karticky = json.load(open('subor.txt'))
 
 
 class Program:
@@ -8,34 +11,6 @@ class Program:
         """
         Otvori vsetky obrazky postaviciek a spusti vstupne dialogove okno s vyberom moznosti hry.
         """
-        self.karticky = json.load(open('subor.txt'))
-        self.pocethracovs = None
-        self.meno = None
-        self.prva = 1
-        self.pocetulozenych_hracov = 0
-        self.auto = tkinter.PhotoImage(file=r"Images/auto.png")
-        self.bota = tkinter.PhotoImage(file=r"Images/bota.png")
-        self.furik = tkinter.PhotoImage(file=r"Images/furik.png")
-        self.klobuk = tkinter.PhotoImage(file=r"Images/klobuk.png")
-        self.lod = tkinter.PhotoImage(file=r"Images/lod.png")
-        self.macka = tkinter.PhotoImage(file=r"Images/macka.png")
-        self.dom = Image.open(r"Images/dom.png")
-        canvas.create_text(600, 450, text="Víta vás Belo games", font="Arial 40")
-        vezenie = Image.open(r"Images/vezenie.jpg")
-        self.vezenie = ImageTk.PhotoImage(vezenie)
-        self.novahra = tkinter.Button(text="Nová hra", command=self.zaciatok)
-        self.novahra.place(x=500, y=500)
-        self.rozohratapartia = tkinter.Button(text="Uložené hry")
-        self.rozohratapartia.place(x=600, y=500)
-        vezenie = Image.open(r"Images/vezenie.jpg")
-        self.vezenie = ImageTk.PhotoImage(vezenie)
-        policajt = Image.open(r"Images/policajt.png")
-        policajt = policajt.rotate(-45)
-        self.policajt = ImageTk.PhotoImage(policajt)
-        wifi = Image.open(r"Images/wifi.png")
-        wifi = wifi.rotate(45)
-        self.wifi = ImageTk.PhotoImage(wifi)
-        self.ram = None
         self.dom = Image.open(r"Images/dom.png")
         self.hotel = Image.open(r"Images/hotel.png")
         self.ximg = tkinter.PhotoImage(file=r"Images/close2.png")
@@ -46,10 +21,18 @@ class Program:
 
         self.ram = None
 
-    def start(self):
+        self.karticky = json.load(open('subor.txt'))
+        vezenie = Image.open(r"Images/vezenie.jpg")
+        self.vezenie = ImageTk.PhotoImage(vezenie)
+        policajt = Image.open(r"Images/policajt.png")
+        policajt = policajt.rotate(-45)
+        self.policajt = ImageTk.PhotoImage(policajt)
+        wifi = Image.open(r"Images/wifi.png")
+
+        wifi = wifi.rotate(45)
+        self.wifi = ImageTk.PhotoImage(wifi)
+
         """Spusti Vykreslovanie hriacej plochy."""
-        self.ukladanie()
-        self.startB.place_forget()
         canvas.create_rectangle(110, 110, 704, 704, )
         # noinspection PyArgumentList
         canvas.create_text(402, 402, text="Belo Games", font="arial 100", angle=45)
@@ -61,6 +44,7 @@ class Program:
         canvas.create_rectangle(self.x, self.y, self.x + 100, self.y)
         pocitac = 0
         kam = 1
+
         for i in self.karticky["postuponost"]:
             if "zeleznica" in i:
 
@@ -103,7 +87,6 @@ class Program:
                 self.voda1 = ImageTk.PhotoImage(self.voda1)
                 self.voda2 = ImageTk.PhotoImage(self.voda2)
                 self.voda3 = ImageTk.PhotoImage(self.voda3)
-
         for cis, i in enumerate(self.karticky["postuponost"]):
             if kam == 1:
                 angl = -90
@@ -180,17 +163,16 @@ class Program:
                 zeleznicax = -33
                 zeleznicay = -50
             canvas.create_rectangle(self.x, self.y, self.x + plusx, self.y + plusy)
-
             self.karticky[i]["odx"] = self.x
             self.karticky[i]["ody"] = self.y
             self.karticky[i]["dox"] = self.x + plusx
             self.karticky[i]["doy"] = self.y + plusy
-            canvas.update()
-            canvas.after(100)
-            self.karticky[i]["indexod"] = self.x
-            self.karticky[i]["indexdo"] = self.x + plusx
-            self.karticky[i]["indexyod"] = self.y
-            self.karticky[i]["indexydo"] = self.y + plusy
+            if self.karticky[i]["Farba"] is not None:
+                canvas.create_rectangle(self.x + plusnafarbux, self.y + plusnafarbuy, self.x + farbax, self.y + farbay,
+                                        fill=self.karticky[i]["Farba"])
+            if self.karticky[i]["Nakupna cena"] is not None:
+                canvas.create_text(self.x + anlx, self.y + angly, text=(str(self.karticky[i]["Nakupna cena"]) + "$"),
+                                   anchor="center", angle=angl)
             if self.karticky[i]["Farba"] is not None:
                 canvas.create_rectangle(self.x + plusnafarbux, self.y + plusnafarbuy, self.x + farbax, self.y + farbay,
                                         fill=self.karticky[i]["Farba"])
@@ -277,62 +259,23 @@ class Program:
                 self.y += posuny
                 self.x += posunx
                 pocitac += 1
-        self.ukaz_hracov()
-
-    def ukaz_hracov(self):
-        """Ukaže mena a hodnotu majetku hračov """
-
-        for x, i in enumerate(self.hraci):
-
-            images = []  # to hold the newly created image
-            image = Image.new('RGBA', (10000, 10000), (65535, 65535, 65535, 127))
-            images.append(ImageTk.PhotoImage(image))
-            ramram = canvas.create_image(0, 0, image=images[-1], anchor='nw')
-            ram = canvas.create_rectangle(300, 300, 500, 500, fill="light blue")
-            text = canvas.create_text(400, 350, text=self.hraci[i]["meno"], fill="black", font="Arial 20")
-            text1 = canvas.create_text(400, 370, text=f'Majetok: {self.hraci[i]["Money"]} $ ', fill="black",
-                                       font="Arial 15")
-            if self.hraci[i]["postavicka"] == "auto":
-                postavicka = canvas.create_image(400, 420, image=self.auto)
-
-            elif self.hraci[i]["postavicka"] == "bota":
-                postavicka = canvas.create_image(400, 430, image=self.bota)
-            elif self.hraci[i]["postavicka"] == "macka":
-                postavicka = canvas.create_image(400, 420, image=self.macka)
-            elif self.hraci[i]["postavicka"] == "lod":
-                postavicka = canvas.create_image(400, 420, image=self.lod)
-            elif self.hraci[i]["postavicka"] == "furik":
-                postavicka = canvas.create_image(400, 420, image=self.furik)
-            elif self.hraci[i]["postavicka"] == "klobuk":
-                postavicka = canvas.create_image(400, 420, image=self.klobuk)
-            canvas.update()
-            canvas.after(1000)
-            canvas.delete(ram, text, text1, postavicka)
-            if x == self.pocethracov - 1:
-                canvas.delete(ram, ramram)
-                break
         self.klik_na_karticku()
 
     def klik_na_karticku(self):
-        """
-        Funkcia caka na kliknutie na karticku aby ju mohla ukazat
-        """
         canvas.bind('<ButtonPress>', self.klik)
-
     def vymaz(self):
-        """
-        Funkcia vymaze karticku vytvorenu funkciou klik
-        """
+
         for x in self.zoz:
             canvas.delete(x)
         self.buttx.place_forget()
-
     def klik(self, event):
-        """
-        Funkcia zistuje na ktoru karticku sa kliklo
-        a nasledne vytvori zvacsenu karticku s plnym popisom
-         """
+
+        # if 580 < event.x < 600 and 200 < event.y < 220:
+        # canvas.delete(self.ram, self.text, self.buttx, self.texxx,self.textnajom,self.podklad)
+        # self.ram = None
+
         if self.ram is not None:
+
             for x in self.zoz:
                 canvas.delete(x)
             self.buttx.place_forget()
@@ -353,24 +296,29 @@ class Program:
             if odx <= event.x < dox and ody <= event.y < \
                     doy:
                 karta = i
-        if karta is not None and "Sanca" not in karta and "Pokladna" not in karta:
+
+        if karta is not None and "Sanca" not in karta and "Pokladna" not in karta :
+
+
+
             if "Energeticke zavody" in karta or "Vodarne" in karta:
 
                 self.ram = canvas.create_rectangle(270, 220, 530, 580, fill="white")
                 self.text = canvas.create_text(400, 240, text=self.karticky[karta]["Nazov"], fill="black",
                                                font="Arial 25")
-                kk = self.karticky[karta]["popis"].split()
+                kk= self.karticky[karta]["popis"].split()
 
                 if "Energeticke zavody" in karta:
-                    self.elektror = self.elektrorr.resize((200, 200))
+                    self.elektror = self.elektrorr.resize((200,200))
                     self.elektrouloz = ImageTk.PhotoImage(self.elektror)
-                    self.obrazok = canvas.create_image(400, 400, image=self.elektrouloz)
+                    self.obrazok = canvas.create_image(400,400,image=self.elektrouloz)
 
 
                 else:
-                    self.kohutikr = self.kohutik.resize((200, 200))
+                    self.kohutikr = self.kohutik.resize((200,200))
                     self.kohutikuloz = ImageTk.PhotoImage(self.kohutikr)
-                    self.obrazok = canvas.create_image(400, 400, image=self.kohutikuloz)
+                    self.obrazok = canvas.create_image(400,400,image=self.kohutikuloz)
+
 
                 pocitadlo = 0
                 vypis = ""
@@ -379,15 +327,14 @@ class Program:
                         vypis += "\n" + slovo + " "
                         pocitadlo = 0
                     elif pocitadlo < 20:
-                        vypis += slovo + " "
-                        pocitadlo += len(slovo) + 1
+                        vypis+= slovo + " "
+                        pocitadlo += len(slovo) +1
                     else:
                         vypis += "\n" + slovo + " "
-                        pocitadlo = 0
+                        pocitadlo =0
                 vypis = vypis.strip()
                 self.popis = canvas.create_text(400, 350, text=vypis, fill="black", font="Helvetica 15")
-                self.texthypoteka = canvas.create_text(400, 515, text=f'Hypotéka {self.karticky[karta]["Hypoteka"]} $',
-                                                       fill="black", font="Helvetica 18")
+                self.texthypoteka = canvas.create_text(400, 515, text=f'Hypotéka {self.karticky[karta]["Hypoteka"]} $', fill="black", font="Helvetica 18")
                 self.zoz = [self.ram, self.text, self.popis, self.texthypoteka, self.obrazok]
             elif "zeleznica" in karta:
                 self.ram = canvas.create_rectangle(270, 220, 530, 580, fill="white")
@@ -398,6 +345,7 @@ class Program:
                 self.vlakra = canvas.create_image(400, 400, image=self.vlakouloz)
                 najomne = f'Nájom {str(self.karticky[karta]["Zakladne najomne"])} $'
                 self.textnajom = canvas.create_text(400, 280, text=najomne, fill="black", font="Helvetica 20")
+
 
                 self.stan2 = canvas.create_text(400, 320,
                                                 text=f'Ak vlastníte 2 stanice  {self.karticky[karta]["Ak vlastni 2"]} $',
@@ -410,26 +358,22 @@ class Program:
                                                 fill="black", font="Helvetica 20")
                 self.texthypoteka = canvas.create_text(400, 515, text=f'Hypotéka {self.karticky[karta]["Hypoteka"]} $',
                                                        fill="black", font="Helvetica 18")
-                self.zoz = [self.ram, self.text, self.vlakra, self.textnajom, self.stan4, self.stan3, self.stan2,
-                            self.texthypoteka]
+                self.zoz = [self.ram,self.text,self.vlakra,self.textnajom,self.stan4,self.stan3,self.stan2,self.texthypoteka]
             elif "Dan" in karta:
                 self.ram = canvas.create_rectangle(270, 220, 530, 580, fill="white")
                 self.text = canvas.create_text(400, 240, text=self.karticky[karta]["Nazov"], fill="black",
                                                font="Arial 25")
                 self.danouloz = ImageTk.PhotoImage(self.dan)
                 self.danu = canvas.create_image(400, 400, image=self.danouloz)
-                self.zaplat = canvas.create_text(400, 500, text=f'Zaplať {self.karticky[karta]["Zakladne najomne"]} $',
-                                                 fill="black",
-                                                 font="Arial 25")
-                self.zoz = [self.ram, self.text, self.danu, self.zaplat]
+                self.zaplat = canvas.create_text(400,500,text=f'Zaplať {self.karticky[karta]["Zakladne najomne"]} $' ,fill="black",
+                                               font="Arial 25")
+                self.zoz = [self.ram,self.text,self.danu,self.zaplat]
             elif "Sanca" not in karta and "zeleznica" not in karta and "Energeticke zavody" not in karta and "Vodarne" not in karta:
                 self.ram = canvas.create_rectangle(270, 220, 530, 580, fill=self.karticky[karta]["Farba"])
                 self.podklad = canvas.create_rectangle(300, 260, 500, 540, fill="white")
                 najomne = f'Nájom {str(self.karticky[karta]["Zakladne najomne"])} $'
                 self.textnajom = canvas.create_text(400, 280, text=najomne, fill="black", font="Helvetica 20")
-                self.textnajompozn = canvas.create_text(400, 305,
-                                                        text="Nájom sa zdvojnasobuje ak vlastníte\n        všetky budovy z tejto farby.",
-                                                        fill="grey", font="Helvetica 12")
+                self.textnajompozn = canvas.create_text(400, 305, text="Nájom sa zdvojnasobuje ak vlastníte\n        všetky budovy z tejto farby.", fill="grey", font="Helvetica 12")
                 self.domr = self.dom.resize((25, 25))
                 self.domuloz = ImageTk.PhotoImage(self.domr)
                 self.hotelr = self.hotel.resize((30, 23))
@@ -445,167 +389,31 @@ class Program:
                 self.dom9 = canvas.create_image(380, 440, image=self.domuloz)
                 self.dom10 = canvas.create_image(405, 440, image=self.domuloz)
                 self.hotel1 = canvas.create_image(330, 470, image=self.hoteluloz)
-                self.textnajom1d = canvas.create_text((490 - (len(str(self.karticky[karta]["1 dom"])) * 3)), 355,
-                                                      text=f'{str(self.karticky[karta]["1 dom"])} $', fill="black",
-                                                      font="Arial 15")
+                self.textnajom1d = canvas.create_text((490-(len(str(self.karticky[karta]["1 dom"]))*3)), 355,text=f'{str(self.karticky[karta]["1 dom"])} $',fill="black", font="Arial 15")
 
-                self.textnajom2d = canvas.create_text((490 - (len(str(self.karticky[karta]["2 domy"])) * 3)), 385,
-                                                      text=f'{str(self.karticky[karta]["2 domy"])} $',
+                self.textnajom2d = canvas.create_text((490-(len(str(self.karticky[karta]["2 domy"]))*3)), 385, text=f'{str(self.karticky[karta]["2 domy"])} $',
                                                       fill="black", font="Arial 15")
-                self.textnajom3d = canvas.create_text((490 - (len(str(self.karticky[karta]["3 domy"])) * 3)), 415,
-                                                      text=f'{str(self.karticky[karta]["3 domy"])} $',
+                self.textnajom3d = canvas.create_text((490-(len(str(self.karticky[karta]["3 domy"]))*3)), 415, text=f'{str(self.karticky[karta]["3 domy"])} $',
                                                       fill="black", font="Arial 15")
-                self.textnajom4d = canvas.create_text((490 - (len(str(self.karticky[karta]["4 domy "])) * 3)), 445,
-                                                      text=f'{str(self.karticky[karta]["4 domy "])} $',
+                self.textnajom4d = canvas.create_text((490-(len(str(self.karticky[karta]["4 domy "]))*3)), 445, text=f'{str(self.karticky[karta]["4 domy "])} $',
                                                       fill="black", font="Arial 15")
                 self.textnajomhotel = canvas.create_text((490 - (len(str(self.karticky[karta]["4 domy "])) * 3)), 475,
-                                                         text=f'{str(self.karticky[karta]["4 domy "])} $',
-                                                         fill="black", font="Arial 15")
-                self.textstavba = canvas.create_text(400, 490,
-                                                     text=f'Stavba {self.karticky[karta]["Cena domu"]} $ každý.',
-                                                     fill="grey", font="Helvetica 15")
-                self.texthypoteka = canvas.create_text(400, 515, text=f'Hypotéka {self.karticky[karta]["Hypoteka"]} $',
-                                                       fill="black", font="Helvetica 18")
+                                                      text=f'{str(self.karticky[karta]["4 domy "])} $',
+                                                      fill="black", font="Arial 15")
+                self.textstavba= canvas.create_text(400, 490, text=f'Stavba {self.karticky[karta]["Cena domu"]} $ každý.', fill="grey", font="Helvetica 15")
+                self.texthypoteka = canvas.create_text(400, 515, text=f'Hypotéka {self.karticky[karta]["Hypoteka"]} $', fill="black", font="Helvetica 18")
                 self.text = canvas.create_text(400, 240, text=self.karticky[karta]["Nazov"], fill="white",
                                                font="Arial 25")
                 self.zoz = [self.ram, self.text, self.textnajom, self.podklad, self.dom1, self.dom2,
-                            self.dom3, self.dom4, self.dom5, self.dom6, self.dom7, self.dom8, self.dom9, self.dom10,
-                            self.hotel1, self.textnajom1d, self.textnajom2d, self.textnajom3d, self.textnajom4d,
-                            self.textnajomhotel, self.texthypoteka, self.textstavba, self.textnajompozn]
-            self.buttx = tkinter.Button(text="X", command=self.vymaz, image=self.ximg)
-            self.buttx.place(x=350, y=590)
-
-    def butons(self, ):
-        """Spusti sa na konci vyberu hraca ako vyzva pre zacatie hry"""
-        self.startB = tkinter.Button(text='Štart', command=self.start)
-        self.startB.place(x=500, y=600, )
-
-    def zaciatok(self):
-        """
-        Vyzva pre vyber poctu hracov cez scale
-        plus vytvori dict s vsetkmi podstatnymi info o hracovi kedze ide o novu hru
-        """
-        self.novahra.place_forget()
-        self.rozohratapartia.place_forget()
-        canvas.create_text(580, 500, text="Vyberte počet hráčov", font="Arial 20")
-        self.pocethracovs = tkinter.Scale(orient='horizontal', from_=2, to=6, length=200)
-        self.pocethracovs.place(x=500, y=550)
-        self.show_potvrdit()
-        self.hraci = {"Hrac1": {"meno": "Hrac 1", "postavicka": "", "karticky": [], "Money": 5000},
-                      "Hrac2": {"meno": "Hrac 2", "postavicka": "", "karticky": [], "Money": 5000},
-                      "Hrac3": {"meno": "Hrac 3", "postavicka": "", "karticky": [], "Money": 5000},
-                      "Hrac4": {"meno": "Hrac 4", "postavicka": "", "karticky": [], "Money": 5000},
-                      "Hrac5": {"meno": "Hrac 5", "postavicka": "", "karticky": [], "Money": 5000},
-                      "Hrac6": {"meno": "Hrac 6", "postavicka": "", "karticky": [], "Money": 5000}, }
-
-    def vyber_postavicky(self):
-        """"
-        Zobrazi galeriu postaviciek a moznostou vyberu postavicky.
-        """
-        self.autobut = tkinter.Button(text='auto', image=self.auto, command=lambda: self.postavicka_k_hracovi("auto"))
-        self.autobut.place(x=900, y=500)
-        self.botabut = tkinter.Button(text='bota', image=self.bota, command=lambda: self.postavicka_k_hracovi("bota"))
-        self.botabut.place(x=1000, y=500)
-        self.furikbut = tkinter.Button(text='Furik', image=self.furik,
-                                       command=lambda: self.postavicka_k_hracovi("furik"))
-        self.furikbut.place(x=1100, y=500)
-        self.klobukbut = tkinter.Button(text='klobuk', image=self.klobuk,
-                                        command=lambda: self.postavicka_k_hracovi("klobuk"))
-        self.klobukbut.place(x=900, y=400)
-        self.lodbut = tkinter.Button(text='lod', image=self.lod, command=lambda: self.postavicka_k_hracovi("lod"))
-        self.lodbut.place(x=1000, y=400)
-        self.mackabut = tkinter.Button(text='macka', image=self.macka,
-                                       command=lambda: self.postavicka_k_hracovi("macka"))
-        self.mackabut.place(x=1100, y=400)
-        self.prva = 0
-
-    def show_potvrdit(self):
-        """
-        Ukaze sa tlacidlo potvrdit s vyzvou na potvrdenie a ulozenie danej veci
-         """
-        self.potvrdit = tkinter.Button(text='Potvrdiť', command=self.ukladanie)
-        self.potvrdit.place(y=600, x=500)
-
-    def ukladanie(self):
-        """
-        Ked je spustena prvy krat zavola funkciu ktora zobrazi galeriu postaviciek
-        a ulozi info ktore sme dostali o pocte hracov
-        ked je spustana znova tak uklada informacie o hracovi ktore si zadal
-        """
-        if self.prva == 1:
-            self.vyber_postavicky()
-            self.prva = None
-            self.pocethracov = self.pocethracovs.get()
-            self.pocethracovs.place_forget()
-            self.vyber_hracov()
-        else:
-            hrac = "Hrac" + str(self.pocetulozenych_hracov + 1)
-            if self.meno.get() != "":
-                self.hraci[hrac]["meno"] = self.meno.get()
-            self.meno.place_forget()
-            self.pocetulozenych_hracov += 1
-            if self.pocetulozenych_hracov < self.pocethracov:
-                self.vyber_hracov()
-            elif self.pocetulozenych_hracov == self.pocethracov:
-                canvas.delete("all")
-                self.startB.place_forget()
-                self.meno.place_forget()
-                self.potvrdit.place_forget()
-                self.vymaz_tlacitka()
-
-    def vymaz_tlacitka(self):
-        """
-        Vymaze vsetky zvysne tlacitka a zavola funkciu na zobrazenie tlacidla START
-        """
-        self.botabut.place_forget()
-        self.autobut.place_forget()
-        self.mackabut.place_forget()
-        self.lodbut.place_forget()
-        self.klobukbut.place_forget()
-        self.furikbut.place_forget()
-        self.butons()
-
-    def postavicka_k_hracovi(self, postavicka):
-        """
-        Zmaze prislusny obrazok postavicky, ktora bola vybrana
-        a do dict daneho hraca priradi jej meno
-        """
-        if self.pocetulozenych_hracov == self.pocethracov - 1:
-            self.butons()
-        else:
-            self.show_potvrdit()
-        if postavicka == "auto":
-            self.autobut.place_forget()
-        elif postavicka == "bota":
-            self.botabut.place_forget()
-        elif postavicka == "macka":
-            self.mackabut.place_forget()
-        elif postavicka == "lod":
-            self.lodbut.place_forget()
-        elif postavicka == "furik":
-            self.furikbut.place_forget()
-        elif postavicka == "klobuk":
-            self.klobukbut.place_forget()
-        hrac = "Hrac" + str(self.pocetulozenych_hracov + 1)
-        self.hraci[hrac]["postavicka"] = str(postavicka)
-
-    def vyber_hracov(self):
-        """
-        Zobratuje Entry label na zadanie mena hraca
-        """
-        self.potvrdit.place_forget()
-        canvas.delete("all")
-        canvas.create_text(500, 500,
-                           text=f'Zadajte meno pre '
-                                f'{self.pocetulozenych_hracov + 1}. hráča a vyberte postavicku',
-                           font="Arial 20")
-        self.meno = tkinter.Entry(width=15, )
-        self.meno.place(x=500, y=550)
-
+                   self.dom3, self.dom4, self.dom5, self.dom6, self.dom7, self.dom8, self.dom9, self.dom10,
+                   self.hotel1, self.textnajom1d, self.textnajom2d, self.textnajom3d, self.textnajom4d,
+                   self.textnajomhotel,self.texthypoteka,self.textstavba,self.textnajompozn]
+            self.buttx = tkinter.Button(text="X",command=self.vymaz, image=self.ximg)
+            self.buttx.place(x=350,y=590)
 
 root = tkinter.Tk()
 root.attributes('-fullscreen', True)  # make main window full-screen
-canvas = tkinter.Canvas(root)
+canvas = tkinter.Canvas(root, background="grey")
 canvas.pack(fill=tkinter.BOTH, expand=True, )
 x = Program()
 
