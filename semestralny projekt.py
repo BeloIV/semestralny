@@ -332,10 +332,7 @@ class Program:
         Funkcia zistuje na ktoru karticku sa kliklo
         a nasledne vytvori zvacsenu karticku s plnym popisom
          """
-
-
         if self.ram is not None:
-
             for x in self.zoz:
                 canvas.delete(x)
             self.buttx.place_forget()
@@ -356,9 +353,7 @@ class Program:
             if odx <= event.x < dox and ody <= event.y < \
                     doy:
                 karta = i
-
         if karta is not None and "Sanca" not in karta and "Pokladna" not in karta:
-
             if "Energeticke zavody" in karta or "Vodarne" in karta:
 
                 self.ram = canvas.create_rectangle(270, 220, 530, 580, fill="white")
