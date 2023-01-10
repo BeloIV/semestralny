@@ -54,7 +54,7 @@
         "3 domy": 550,
         "4 domy ": 750,
         "Hotel": 950,
-        "Farba": "orange"
+        "Farba": "DarkOrange1"
     },
     "Druha orazova Ulica": {
         "Nazov": "\u0160turova ulica",
@@ -68,7 +68,7 @@
         "3 domy": 550,
         "4 domy ": 750,
         "Hotel": 950,
-        "Farba": "orange"
+        "Farba": "DarkOrange1"
     },
     "Tretia orazova ulica": {
         "Nazov": "Dostojovskeho ulica",
@@ -82,7 +82,7 @@
         "3 domy": 600,
         "4 domy ": 800,
         "Hotel": 1000,
-        "Farba": "orange"
+        "Farba": "DarkOrange1"
     },
     "Prva ruzova ulica": {
         "Nazov": "Vajanskeho nabrezie",
@@ -138,7 +138,7 @@
         "3 domy": 300,
         "4 domy ": 450,
         "Hotel": 600,
-        "Farba": "lightblue"
+        "Farba": "deep sky blue"
     },
     "Druha svetlomodra ulica": {
         "Nazov": "Karad\u017ei\u010dova ulica",
@@ -152,7 +152,7 @@
         "3 domy": 270,
         "4 domy ": 400,
         "Hotel": 550,
-        "Farba": "lightblue"
+        "Farba": "deep sky blue"
     },
     "Tretia svetlomodra ulica": {
         "Nazov": "Dunajska ulica",
@@ -166,7 +166,7 @@
         "3 domy": 270,
         "4 domy ": 400,
         "Hotel": 550,
-        "Farba": "lightblue"
+        "Farba": "deep sky blue"
     },
     "Prva hneda ulica": {
         "Nazov": "Pansk\u00e1 ulica",
@@ -199,71 +199,71 @@
     "Prva modra ulica": {
         "Nazov": "Hlavne namestie",
         "Nakupna cena": 400,
-        "Hypoteka": 30,
-        "Cena domu": 50,
-        "Cena Hotelu": 50,
-        "Zakladne najomne": 2,
-        "1 dom": 10,
-        "2 domy": 30,
-        "3 domy": 90,
-        "4 domy ": 160,
-        "Hotel": 250,
+        "Hypoteka": 200,
+        "Cena domu": 200,
+        "Cena Hotelu": 200,
+        "Zakladne najomne": 50,
+        "1 dom": 200,
+        "2 domy": 600,
+        "3 domy": 1400,
+        "4 domy ": 1700,
+        "Hotel": 2000,
         "Farba": "darkblue"
     },
     "Druha modra ulica": {
         "Nazov": "Obchodna ulica",
         "Nakupna cena": 350,
-        "Hypoteka": 30,
-        "Cena domu": 50,
-        "Cena Hotelu": 50,
-        "Zakladne najomne": 2,
-        "1 dom": 10,
-        "2 domy": 30,
-        "3 domy": 90,
-        "4 domy ": 160,
-        "Hotel": 250,
+        "Hypoteka": 175,
+        "Cena domu": 200,
+        "Cena Hotelu": 200,
+        "Zakladne najomne": 35,
+        "1 dom": 175,
+        "2 domy": 500,
+        "3 domy": 1100,
+        "4 domy ": 1300,
+        "Hotel": 1500,
         "Farba": "darkblue"
     },
     "Prva zelena ulica": {
         "Nazov": "Einsteinova ulica",
         "Nakupna cena": 320,
-        "Hypoteka": 30,
-        "Cena domu": 50,
-        "Cena Hotelu": 50,
-        "Zakladne najomne": 2,
-        "1 dom": 10,
-        "2 domy": 30,
-        "3 domy": 90,
-        "4 domy ": 160,
-        "Hotel": 250,
+        "Hypoteka": 160,
+        "Cena domu": 200,
+        "Cena Hotelu": 200,
+        "Zakladne najomne": 28,
+        "1 dom": 150,
+        "2 domy": 450,
+        "3 domy": 1000,
+        "4 domy ": 1200,
+        "Hotel": 1400,
         "Farba": "green"
     },
     "Druha zelena ulica": {
         "Nazov": "Mlynske nivy",
-        "Nakupna cena": 320,
-        "Hypoteka": 30,
-        "Cena domu": 50,
-        "Cena Hotelu": 50,
-        "Zakladne najomne": 2,
-        "1 dom": 10,
-        "2 domy": 30,
-        "3 domy": 90,
-        "4 domy ": 160,
-        "Hotel": 250,
+        "Nakupna cena": 300,
+        "Hypoteka": 150,
+        "Cena domu": 200,
+        "Cena Hotelu": 200,
+        "Zakladne najomne": 26,
+        "1 dom": 130,
+        "2 domy": 390,
+        "3 domy": 900,
+        "4 domy ": 1100,
+        "Hotel": 1275,
         "Farba": "green"
     },
     "Tretia zelena ulica": {
         "Nazov": "Americke namestie",
         "Nakupna cena": 300,
-        "Hypoteka": 30,
-        "Cena domu": 50,
-        "Cena Hotelu": 50,
-        "Zakladne najomne": 2,
-        "1 dom": 10,
-        "2 domy": 30,
-        "3 domy": 90,
-        "4 domy ": 160,
-        "Hotel": 250,
+        "Hypoteka": 150,
+        "Cena domu": 200,
+        "Cena Hotelu": 200,
+        "Zakladne najomne": 26,
+        "1 dom": 130,
+        "2 domy": 390,
+        "3 domy": 900,
+        "4 domy ": 1100,
+        "Hotel": 1275,
         "Farba": "green"
     },
     "Prva zlta ulica": {
@@ -278,7 +278,7 @@
         "3 domy": 850,
         "4 domy ": 1025,
         "Hotel": 1200,
-        "Farba": "yellow"
+        "Farba": "DarkGoldenrod2"
     },
     "Druha zlta ulica": {
         "Nazov": "Ko\u0161icka ulica",
@@ -292,7 +292,7 @@
         "3 domy": 800,
         "4 domy ": 975,
         "Hotel": 1150,
-        "Farba": "yellow"
+        "Farba": "DarkGoldenrod2"
     },
     "Tretia zlta ulica": {
         "Nazov": "Ra\u010dianska ulica",
@@ -306,7 +306,7 @@
         "3 domy": 800,
         "4 domy ": 975,
         "Hotel": 1050,
-        "Farba": "yellow"
+        "Farba": "DarkGoldenrod2"
     },
     "Prva cervena ulica": {
         "Nazov": "Palisady",
@@ -369,7 +369,7 @@
         "Image": "B_pay.png"
     },
     "zeleznica1": {
-        "Nazov": "Zeleznica",
+        "Nazov": "Hlavna stanica",
         "Nakupna cena": 200,
         "Hypoteka": 100,
         "Zakladne najomne": 16,
@@ -380,7 +380,7 @@
         "Image": "vlak.png"
     },
     "zeleznica2": {
-        "Nazov": "Zeleznica",
+        "Nazov": "Vinohrady",
         "Nakupna cena": 200,
         "Hypoteka": 100,
         "Zakladne najomne": 16,
@@ -391,7 +391,7 @@
         "Image": "vlak.png"
     },
     "zeleznica3": {
-        "Nazov": "Zeleznica",
+        "Nazov": "Per\u017ealka",
         "Nakupna cena": 200,
         "Hypoteka": 100,
         "Zakladne najomne": 16,
@@ -402,7 +402,7 @@
         "Image": "vlak.png"
     },
     "zeleznica4": {
-        "Nazov": "Zeleznica",
+        "Nazov": "Nov\u00e9 mesto",
         "Nakupna cena": 200,
         "Hypoteka": 100,
         "Zakladne najomne": 16,
@@ -417,7 +417,7 @@
         "Nakupna cena": 150,
         "Hypoteka": 75,
         "Farba": null,
-        "popis": "Ak hr\u00e1\u010d vlastn\u00ed jeden podnik verejn\u00fdch slu\u017eieb, na\u00e1jomn\u00e9 je \u0161tvornasobok hodu obidvoch kociek.Ak hr\u00e1\u010d vlastn\u00ed OBIDVA podniky verejn\u00fdch slu\u017eieb, n\u00e1jomn\u00e9 je desa\u0165nasobok hodu obidvoch kociek. ",
+        "popis": "Ak hr\u00e1\u010d vlastn\u00ed jeden podnik verejn\u00fdch slu\u017eieb, najomn\u00e9 je \u0161tvornasobok hodu obidvoch kociek.  Ak hr\u00e1\u010d vlastn\u00ed OBIDVA podniky verejn\u00fdch slu\u017eieb, n\u00e1jomn\u00e9 je desa\u0165nasobok hodu obidvoch kociek. ",
         "Ak vlastni 1 nasobok": 4,
         "Ak vlastni obe nasobok": 10,
         "Image": "elektro.png"
@@ -455,7 +455,7 @@
         "Image": null
     },
     "Vodarne": {
-        "NazovNazov": "Vodarne",
+        "Nazov": "Vodarne",
         "Nakupna cena": 150,
         "Hypoteka": 75,
         "Farba": null,

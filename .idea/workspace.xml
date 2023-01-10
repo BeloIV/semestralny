@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed3eaa66-71c4-4191-8f6a-9eeeb4ee5994" name="Changes" comment="" />
+    <list default="true" id="ed3eaa66-71c4-4191-8f6a-9eeeb4ee5994" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/elektro.png" beforeDir="false" afterPath="$PROJECT_DIR$/Images/elektro.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/kohutik.png" beforeDir="false" afterPath="$PROJECT_DIR$/Images/kohutik.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/karticky.py" beforeDir="false" afterPath="$PROJECT_DIR$/karticky.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plocha.py" beforeDir="false" afterPath="$PROJECT_DIR$/plocha.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/semestralny projekt.py" beforeDir="false" afterPath="$PROJECT_DIR$/semestralny projekt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subor.txt" beforeDir="false" afterPath="$PROJECT_DIR$/subor.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,27 +68,6 @@
   }
 }</component>
   <component name="RunManager" selected="Python.semestralny projekt">
-    <configuration name="564" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="semestralny" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/564.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="karticky" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="semestralny" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -167,6 +155,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="semestralny" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="ukaz hracov" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="semestralny" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -191,17 +200,17 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.semestralny projekt" />
-        <item itemvalue="Python.karticky" />
         <item itemvalue="Python.plocha" />
+        <item itemvalue="Python.karticky" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.ukaz hracov" />
-        <item itemvalue="Python.564" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d93ce396-f468-4f52-9dd0-da31e3a25eda" name="Changes" comment="" />
+      <changelist id="ed3eaa66-71c4-4191-8f6a-9eeeb4ee5994" name="Changes" comment="" />
       <created>1668976267997</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -235,16 +244,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="neide pil" />
     <option name="LAST_COMMIT_MESSAGE" value="neide pil" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/plocha.py</url>
-          <line>26</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

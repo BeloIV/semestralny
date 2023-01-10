@@ -36,6 +36,15 @@ class Program:
         wifi = wifi.rotate(45)
         self.wifi = ImageTk.PhotoImage(wifi)
         self.ram = None
+        self.dom = Image.open(r"Images/dom.png")
+        self.hotel = Image.open(r"Images/hotel.png")
+        self.ximg = tkinter.PhotoImage(file=r"Images/close2.png")
+        self.elektrorr = Image.open(r"Images/elektro2.png")
+        self.vlak = Image.open(r"Images/vlak2.png")
+        self.kohutik = Image.open(r"Images/kohutik2.png")
+        self.dan = Image.open(r"Images/dan2.png")
+
+        self.ram = None
 
     def start(self):
         """Spusti Vykreslovanie hriacej plochy."""
@@ -305,16 +314,33 @@ class Program:
         self.klik_na_karticku()
 
     def klik_na_karticku(self):
-
+        """
+        Funkcia caka na kliknutie na karticku aby ju mohla ukazat
+        """
         canvas.bind('<ButtonPress>', self.klik)
 
-    def klik(self, event):
-        print(self.ram)
-        if self.ram is not None:
-            canvas.delete(self.ram, self.ramram, self.text, self.buttx, self.texxx, self.textnajom)
-        karta = None
-        for i in self.karticky["postuponost"]:
+    def vymaz(self):
+        """
+        Funkcia vymaze karticku vytvorenu funkciou klik
+        """
+        for x in self.zoz:
+            canvas.delete(x)
+        self.buttx.place_forget()
 
+    def klik(self, event):
+        """
+        Funkcia zistuje na ktoru karticku sa kliklo
+        a nasledne vytvori zvacsenu karticku s plnym popisom
+         """
+
+
+        if self.ram is not None:
+
+            for x in self.zoz:
+                canvas.delete(x)
+            self.buttx.place_forget()
+            karta = None
+        for i in self.karticky["postuponost"]:
             if self.karticky[i]["odx"] > self.karticky[i]["dox"]:
                 odx = self.karticky[i]["dox"]
                 dox = self.karticky[i]["odx"]
@@ -330,28 +356,129 @@ class Program:
             if odx <= event.x < dox and ody <= event.y < \
                     doy:
                 karta = i
-        if karta is not None:
-            images = []  # to hold the newly created image
-            image = Image.new('RGBA', (10000, 10000), (65535, 65535, 65535, 127))
-            images.append(ImageTk.PhotoImage(image))
-            self.ramram = canvas.create_image(0, 0, image=images[-1], anchor='nw')
-            self.ram = canvas.create_rectangle(200, 200, 600, 600, fill=self.karticky[karta]["Farba"])
 
-            if "Sanca" not in karta and "zeleznica2" not in karta and "Energeticke zavody" not in karta and "Vodarne" not in karta:
-                najomne = f'Zakladné nájomne{str(self.karticky[karta]["Zakladne najomne"])}\nNájomné s 1 domom:{str(self.karticky[karta]["1 dom"])} $\nNájomné s 2 domami:{str(self.karticky[karta]["2 domy"])} $\nNájomné s 3 domami:{str(self.karticky[karta]["3 domy"])} $\nNájomné s 4 domami:{str(self.karticky[karta]["4 domy "]) } $\nNájomné s hotelom:{str(self.karticky[karta]["Hotel"])} $\n Cena stavby: {str(self.karticky[karta]["Cena Hotelu"])} $ '
-                self.textnajom = canvas.create_text(400, 300, text=najomne, fill="black", font="Helvetica 15")
+        if karta is not None and "Sanca" not in karta and "Pokladna" not in karta:
+
+            if "Energeticke zavody" in karta or "Vodarne" in karta:
+
+                self.ram = canvas.create_rectangle(270, 220, 530, 580, fill="white")
+                self.text = canvas.create_text(400, 240, text=self.karticky[karta]["Nazov"], fill="black",
+                                               font="Arial 25")
+                kk = self.karticky[karta]["popis"].split()
+
+                if "Energeticke zavody" in karta:
+                    self.elektror = self.elektrorr.resize((200, 200))
+                    self.elektrouloz = ImageTk.PhotoImage(self.elektror)
+                    self.obrazok = canvas.create_image(400, 400, image=self.elektrouloz)
 
 
-            self.text = canvas.create_text(405, 220, text=self.karticky[karta]["Nazov"], fill="black", font="Arial 20")
-            self.buttx = canvas.create_rectangle(600, 200, 580, 220, fill="red")
-            self.texxx = canvas.create_text(590, 210, text="x", font="Arial 20", fill="black")
-            canvas.bind('<ButtonPress>', self.zrus_karticku)
+                else:
+                    self.kohutikr = self.kohutik.resize((200, 200))
+                    self.kohutikuloz = ImageTk.PhotoImage(self.kohutikr)
+                    self.obrazok = canvas.create_image(400, 400, image=self.kohutikuloz)
 
-    def zrus_karticku(self, event):
-        if 580 < event.x < 600 and 200 < event.y < 220:
-            canvas.delete(self.ram, self.ramram, self.text, self.buttx, self.texxx,self.textnajom)
-            self.ram = None
-        self.klik_na_karticku()
+                pocitadlo = 0
+                vypis = ""
+                for slovo in kk:
+                    if "Ak" in slovo:
+                        vypis += "\n" + slovo + " "
+                        pocitadlo = 0
+                    elif pocitadlo < 20:
+                        vypis += slovo + " "
+                        pocitadlo += len(slovo) + 1
+                    else:
+                        vypis += "\n" + slovo + " "
+                        pocitadlo = 0
+                vypis = vypis.strip()
+                self.popis = canvas.create_text(400, 350, text=vypis, fill="black", font="Helvetica 15")
+                self.texthypoteka = canvas.create_text(400, 515, text=f'Hypotéka {self.karticky[karta]["Hypoteka"]} $',
+                                                       fill="black", font="Helvetica 18")
+                self.zoz = [self.ram, self.text, self.popis, self.texthypoteka, self.obrazok]
+            elif "zeleznica" in karta:
+                self.ram = canvas.create_rectangle(270, 220, 530, 580, fill="white")
+                self.text = canvas.create_text(400, 240, text=self.karticky[karta]["Nazov"], fill="black",
+                                               font="Arial 25")
+                self.vlakr = self.vlak.resize((200, 200))
+                self.vlakouloz = ImageTk.PhotoImage(self.vlakr)
+                self.vlakra = canvas.create_image(400, 400, image=self.vlakouloz)
+                najomne = f'Nájom {str(self.karticky[karta]["Zakladne najomne"])} $'
+                self.textnajom = canvas.create_text(400, 280, text=najomne, fill="black", font="Helvetica 20")
+
+                self.stan2 = canvas.create_text(400, 320,
+                                                text=f'Ak vlastníte 2 stanice  {self.karticky[karta]["Ak vlastni 2"]} $',
+                                                fill="black", font="Helvetica 20")
+                self.stan3 = canvas.create_text(400, 350,
+                                                text=f'Ak vlastníte 3 stanice {self.karticky[karta]["Ak vlastni 3"]} $',
+                                                fill="black", font="Helvetica 20")
+                self.stan4 = canvas.create_text(400, 380,
+                                                text=f'Ak vlastníte 4 stanice {self.karticky[karta]["Ak vlastni 4"]} $',
+                                                fill="black", font="Helvetica 20")
+                self.texthypoteka = canvas.create_text(400, 515, text=f'Hypotéka {self.karticky[karta]["Hypoteka"]} $',
+                                                       fill="black", font="Helvetica 18")
+                self.zoz = [self.ram, self.text, self.vlakra, self.textnajom, self.stan4, self.stan3, self.stan2,
+                            self.texthypoteka]
+            elif "Dan" in karta:
+                self.ram = canvas.create_rectangle(270, 220, 530, 580, fill="white")
+                self.text = canvas.create_text(400, 240, text=self.karticky[karta]["Nazov"], fill="black",
+                                               font="Arial 25")
+                self.danouloz = ImageTk.PhotoImage(self.dan)
+                self.danu = canvas.create_image(400, 400, image=self.danouloz)
+                self.zaplat = canvas.create_text(400, 500, text=f'Zaplať {self.karticky[karta]["Zakladne najomne"]} $',
+                                                 fill="black",
+                                                 font="Arial 25")
+                self.zoz = [self.ram, self.text, self.danu, self.zaplat]
+            elif "Sanca" not in karta and "zeleznica" not in karta and "Energeticke zavody" not in karta and "Vodarne" not in karta:
+                self.ram = canvas.create_rectangle(270, 220, 530, 580, fill=self.karticky[karta]["Farba"])
+                self.podklad = canvas.create_rectangle(300, 260, 500, 540, fill="white")
+                najomne = f'Nájom {str(self.karticky[karta]["Zakladne najomne"])} $'
+                self.textnajom = canvas.create_text(400, 280, text=najomne, fill="black", font="Helvetica 20")
+                self.textnajompozn = canvas.create_text(400, 305,
+                                                        text="Nájom sa zdvojnasobuje ak vlastníte\n        všetky budovy z tejto farby.",
+                                                        fill="grey", font="Helvetica 12")
+                self.domr = self.dom.resize((25, 25))
+                self.domuloz = ImageTk.PhotoImage(self.domr)
+                self.hotelr = self.hotel.resize((30, 23))
+                self.hoteluloz = ImageTk.PhotoImage(self.hotelr)
+                self.dom1 = canvas.create_image(330, 350, image=self.domuloz)
+                self.dom2 = canvas.create_image(330, 380, image=self.domuloz)
+                self.dom3 = canvas.create_image(355, 380, image=self.domuloz)
+                self.dom4 = canvas.create_image(330, 410, image=self.domuloz)
+                self.dom5 = canvas.create_image(355, 410, image=self.domuloz)
+                self.dom6 = canvas.create_image(380, 410, image=self.domuloz)
+                self.dom7 = canvas.create_image(330, 440, image=self.domuloz)
+                self.dom8 = canvas.create_image(355, 440, image=self.domuloz)
+                self.dom9 = canvas.create_image(380, 440, image=self.domuloz)
+                self.dom10 = canvas.create_image(405, 440, image=self.domuloz)
+                self.hotel1 = canvas.create_image(330, 470, image=self.hoteluloz)
+                self.textnajom1d = canvas.create_text((490 - (len(str(self.karticky[karta]["1 dom"])) * 3)), 355,
+                                                      text=f'{str(self.karticky[karta]["1 dom"])} $', fill="black",
+                                                      font="Arial 15")
+
+                self.textnajom2d = canvas.create_text((490 - (len(str(self.karticky[karta]["2 domy"])) * 3)), 385,
+                                                      text=f'{str(self.karticky[karta]["2 domy"])} $',
+                                                      fill="black", font="Arial 15")
+                self.textnajom3d = canvas.create_text((490 - (len(str(self.karticky[karta]["3 domy"])) * 3)), 415,
+                                                      text=f'{str(self.karticky[karta]["3 domy"])} $',
+                                                      fill="black", font="Arial 15")
+                self.textnajom4d = canvas.create_text((490 - (len(str(self.karticky[karta]["4 domy "])) * 3)), 445,
+                                                      text=f'{str(self.karticky[karta]["4 domy "])} $',
+                                                      fill="black", font="Arial 15")
+                self.textnajomhotel = canvas.create_text((490 - (len(str(self.karticky[karta]["4 domy "])) * 3)), 475,
+                                                         text=f'{str(self.karticky[karta]["4 domy "])} $',
+                                                         fill="black", font="Arial 15")
+                self.textstavba = canvas.create_text(400, 490,
+                                                     text=f'Stavba {self.karticky[karta]["Cena domu"]} $ každý.',
+                                                     fill="grey", font="Helvetica 15")
+                self.texthypoteka = canvas.create_text(400, 515, text=f'Hypotéka {self.karticky[karta]["Hypoteka"]} $',
+                                                       fill="black", font="Helvetica 18")
+                self.text = canvas.create_text(400, 240, text=self.karticky[karta]["Nazov"], fill="white",
+                                               font="Arial 25")
+                self.zoz = [self.ram, self.text, self.textnajom, self.podklad, self.dom1, self.dom2,
+                            self.dom3, self.dom4, self.dom5, self.dom6, self.dom7, self.dom8, self.dom9, self.dom10,
+                            self.hotel1, self.textnajom1d, self.textnajom2d, self.textnajom3d, self.textnajom4d,
+                            self.textnajomhotel, self.texthypoteka, self.textstavba, self.textnajompozn]
+            self.buttx = tkinter.Button(text="X", command=self.vymaz, image=self.ximg)
+            self.buttx.place(x=350, y=590)
 
     def butons(self, ):
         """Spusti sa na konci vyberu hraca ako vyzva pre zacatie hry"""
