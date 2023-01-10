@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed3eaa66-71c4-4191-8f6a-9eeeb4ee5994" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Images/elektro.png" beforeDir="false" afterPath="$PROJECT_DIR$/Images/elektro.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Images/kohutik.png" beforeDir="false" afterPath="$PROJECT_DIR$/Images/kohutik.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/karticky.py" beforeDir="false" afterPath="$PROJECT_DIR$/karticky.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plocha.py" beforeDir="false" afterPath="$PROJECT_DIR$/plocha.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/semestralny projekt.py" beforeDir="false" afterPath="$PROJECT_DIR$/semestralny projekt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subor.txt" beforeDir="false" afterPath="$PROJECT_DIR$/subor.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-    </list>
+    <list default="true" id="ed3eaa66-71c4-4191-8f6a-9eeeb4ee5994" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
