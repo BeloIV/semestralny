@@ -4,6 +4,19 @@ import json
 
 
 class Program:
+
+    def __init__(self):
+        self.vypis = VypisAUlozenie()
+        self.klik_na_karticku()
+    def klik_na_karticku(self):
+        """
+        Funkcia caka na kliknutie na karticku aby ju mohla ukazat
+        """
+        canvas.bind('<ButtonPress>', self.vypis.klik)
+
+
+    
+class VypisAUlozenie(Program):
     def __init__(self):
         """
         Otvori vsetky obrazky postaviciek a spusti vstupne dialogove okno s vyberom moznosti hry.
@@ -312,11 +325,10 @@ class Program:
                 break
         self.klik_na_karticku()
 
-    def klik_na_karticku(self):
-        """
-        Funkcia caka na kliknutie na karticku aby ju mohla ukazat
-        """
-        canvas.bind('<ButtonPress>', self.klik)
+    def butons(self, ):
+        """Spusti sa na konci vyberu hraca ako vyzva pre zacatie hry"""
+        self.startB = tkinter.Button(text='Štart', command=self.start)
+        self.startB.place(x=500, y=600, )
 
     def vymaz(self):
         """
@@ -473,12 +485,6 @@ class Program:
                             self.textnajomhotel, self.texthypoteka, self.textstavba, self.textnajompozn]
             self.buttx = tkinter.Button(text="X", command=self.vymaz, image=self.ximg)
             self.buttx.place(x=350, y=590)
-
-    def butons(self, ):
-        """Spusti sa na konci vyberu hraca ako vyzva pre zacatie hry"""
-        self.startB = tkinter.Button(text='Štart', command=self.start)
-        self.startB.place(x=500, y=600, )
-
     def zaciatok(self):
         """
         Vyzva pre vyber poctu hracov cez scale
@@ -496,7 +502,6 @@ class Program:
                       "Hrac4": {"meno": "Hrac 4", "postavicka": "", "karticky": [], "Money": 5000},
                       "Hrac5": {"meno": "Hrac 5", "postavicka": "", "karticky": [], "Money": 5000},
                       "Hrac6": {"meno": "Hrac 6", "postavicka": "", "karticky": [], "Money": 5000}, }
-
     def vyber_postavicky(self):
         """"
         Zobrazi galeriu postaviciek a moznostou vyberu postavicky.
@@ -517,14 +522,12 @@ class Program:
                                        command=lambda: self.postavicka_k_hracovi("macka"))
         self.mackabut.place(x=1100, y=400)
         self.prva = 0
-
     def show_potvrdit(self):
         """
         Ukaze sa tlacidlo potvrdit s vyzvou na potvrdenie a ulozenie danej veci
          """
         self.potvrdit = tkinter.Button(text='Potvrdiť', command=self.ukladanie)
         self.potvrdit.place(y=600, x=500)
-
     def ukladanie(self):
         """
         Ked je spustena prvy krat zavola funkciu ktora zobrazi galeriu postaviciek
@@ -551,7 +554,6 @@ class Program:
                 self.meno.place_forget()
                 self.potvrdit.place_forget()
                 self.vymaz_tlacitka()
-
     def vymaz_tlacitka(self):
         """
         Vymaze vsetky zvysne tlacitka a zavola funkciu na zobrazenie tlacidla START
@@ -563,7 +565,6 @@ class Program:
         self.klobukbut.place_forget()
         self.furikbut.place_forget()
         self.butons()
-
     def postavicka_k_hracovi(self, postavicka):
         """
         Zmaze prislusny obrazok postavicky, ktora bola vybrana
@@ -600,7 +601,6 @@ class Program:
                            font="Arial 20")
         self.meno = tkinter.Entry(width=15, )
         self.meno.place(x=500, y=550)
-
 
 root = tkinter.Tk()
 root.attributes('-fullscreen', True)  # make main window full-screen
