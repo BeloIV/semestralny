@@ -7,8 +7,11 @@ import json
 class Program:
 
     def __init__(self):
-        """Otvori obrazky postaviciek ktore budu pouzite ako figurky a zavola class kde sa vypisuje hracia polocha
-        a aj deje vsetko graficke"""
+        """
+        Otvori obrazky postaviciek ktore budu pouzite ako figurky
+        a zavola class kde sa vypisuje hracia polocha
+        a aj deje vsetko graficke
+        """
         self.vypis = VypisAUlozenie()
         self.auto = tkinter.PhotoImage(file=r"Images/auto.png")
         self.bota = tkinter.PhotoImage(file=r"Images/bota.png")
@@ -389,7 +392,7 @@ class VypisAUlozenie(Program):
             canvas.delete(x)
         self.buttx.place_forget()
     def kocka(self):
-        """Polozi 2 sesty na miesto s kockami aby neboli prazdne"""
+        """Polozi 2 sesky na miesto s kockami aby neboli prazdne"""
         self.ramkocky = canvas.create_rectangle(820, 370, 880, 430, width=5)
         self.ramkocky2 = canvas.create_rectangle(820, 470, 880, 530, width=5)
         self.kocka1 = canvas.create_image(850, 400, image=self.kocka6)
