@@ -1,4 +1,6 @@
 import tkinter
+import random
+
 from PIL import Image, ImageTk
 import json
 
@@ -7,6 +9,14 @@ class Program:
 
     def __init__(self):
         self.vypis = VypisAUlozenie()
+        self.auto = tkinter.PhotoImage(file=r"Images/auto.png")
+        self.bota = tkinter.PhotoImage(file=r"Images/bota.png")
+        self.furik = tkinter.PhotoImage(file=r"Images/furik.png")
+        self.klobuk = tkinter.PhotoImage(file=r"Images/klobuk.png")
+        self.lod = tkinter.PhotoImage(file=r"Images/lod.png")
+        self.macka = tkinter.PhotoImage(file=r"Images/macka.png")
+        self.dom = Image.open(r"Images/dom.png")
+        self.hotel = Image.open(r"Images/hotel.png")
         self.klik_na_karticku()
 
     def klik_na_karticku(self):
@@ -14,6 +24,20 @@ class Program:
         Funkcia caka na kliknutie na karticku aby ju mohla ukazat
         """
         canvas.bind('<ButtonPress>', self.vypis.klik)
+    def kocka(self):
+        tk_id = canvas.create_image(800, 800)
+        tk_id2 = canvas.create_image(800,800)
+        zoz = [tkinter.PhotoImage(file=f'Images/dice/roll{i}.png') for i in range(1, 7)]
+        i = 0
+        i2 = 0
+        for d in range(30):
+            i = random.randint(1, 6)
+            i2 = random.randint(1, 6)
+            canvas.itemconfig(tk_id, image=zoz[i - 1])
+            canvas.itemconfig(tk_id2, image=zoz[i2 - 1])
+            canvas.update()
+            canvas.after(100)
+
     def zmena_hraca(self,hraci):
         self.hraci = hraci
         print(self.hraci)
@@ -515,9 +539,7 @@ class VypisAUlozenie(Program):
                       "Hrac5": {"meno": "Hrac 5", "postavicka": "", "karticky": [], "Money": 5000},
                       "Hrac6": {"meno": "Hrac 6", "postavicka": "", "karticky": [], "Money": 5000}, }
 
-    @property
-    def dajhraci(self):
-        return self.hraci
+
     def vyber_postavicky(self):
         """"
         Zobrazi galeriu postaviciek a moznostou vyberu postavicky.
