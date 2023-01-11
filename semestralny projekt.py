@@ -31,9 +31,7 @@ class Program:
         self.hraci = hraci
         print(self.hraci)
         self.hraci["Hrac1"]["Money"] += 50
-        self.ukaz()
-    def ukaz(self):
-        print(self.hraci)
+
 class VypisAUlozenie(Program):
     def __init__(self):
         """
