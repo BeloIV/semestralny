@@ -1,6 +1,5 @@
 import tkinter
 import random
-
 from PIL import Image, ImageTk
 import json
 
@@ -8,6 +7,11 @@ import json
 class Program:
 
     def __init__(self):
+        """
+        Otvori obrazky postaviciek ktore budu pouzite ako figurky
+        a zavola class kde sa vypisuje hracia polocha
+        a aj deje vsetko graficke
+        """
         self.vypis = VypisAUlozenie()
         self.auto = tkinter.PhotoImage(file=r"Images/auto.png")
         self.bota = tkinter.PhotoImage(file=r"Images/bota.png")
@@ -18,40 +22,25 @@ class Program:
         self.dom = Image.open(r"Images/dom.png")
         self.hotel = Image.open(r"Images/hotel.png")
         self.klik_na_karticku()
-
     def klik_na_karticku(self):
         """
         Funkcia caka na kliknutie na karticku aby ju mohla ukazat
         """
         canvas.bind('<ButtonPress>', self.vypis.klik)
-    def kocka(self):
-        tk_id = canvas.create_image(800, 800)
-        tk_id2 = canvas.create_image(800,800)
-        zoz = [tkinter.PhotoImage(file=f'Images/dice/roll{i}.png') for i in range(1, 7)]
-        i = 0
-        i2 = 0
-        for d in range(30):
-            i = random.randint(1, 6)
-            i2 = random.randint(1, 6)
-            canvas.itemconfig(tk_id, image=zoz[i - 1])
-            canvas.itemconfig(tk_id2, image=zoz[i2 - 1])
-            canvas.update()
-            canvas.after(100)
-
-    def zmena_hraca(self,hraci):
+    def zmena_hraca(self, hraci):
         self.hraci = hraci
         print(self.hraci)
         self.hraci["Hrac1"]["Money"] += 50
         self.ukaz()
     def ukaz(self):
         print(self.hraci)
-
-
 class VypisAUlozenie(Program):
     def __init__(self):
         """
-        Otvori vsetky obrazky postaviciek a spusti vstupne dialogove okno s vyberom moznosti hry.
+        Otvori vsetky obrazky postaviciek karticiek a kociek
+        a spusti vstupne dialogove okno s vyberom moznosti hry.
         """
+        self.kocka6 = tkinter.PhotoImage(file=f'Images/dice/roll6.png')
         self.karticky = json.load(open('subor.txt'))
         self.pocethracovs = None
         self.meno = None
@@ -88,6 +77,40 @@ class VypisAUlozenie(Program):
         self.kohutik = Image.open(r"Images/kohutik2.png")
         self.dan = Image.open(r"Images/dan2.png")
         self.ram = None
+        obr1 = Image.open(f'Images/dice/roll1.png')
+        self.kocka1obr = ImageTk.PhotoImage(obr1)
+        obr2 = Image.open(f'Images/dice/roll2.png')
+        self.kocka2obr = ImageTk.PhotoImage(obr2)
+        obr3 = Image.open(f'Images/dice/roll3.png')
+        self.kocka3 = ImageTk.PhotoImage(obr3)
+        obr4 = Image.open(f'Images/dice/roll4.png')
+        self.kocka4 = ImageTk.PhotoImage(obr4)
+        obr5 = Image.open(f'Images/dice/roll5.png')
+        self.kocka5 = ImageTk.PhotoImage(obr5)
+        obr6 = Image.open(f'Images/dice/roll6.png')
+        self.kocka6 = ImageTk.PhotoImage(obr6)
+        self.zozkociek = [self.kocka1obr,self.kocka2obr,self.kocka3,self.kocka4,self.kocka5,self.kocka6]
+        self.mozes=1
+
+
+    def roll(self):
+
+        """Hadze kockami a na konci ulozi ake cislo bolo na kockách"""
+        self.mozes = 0
+        pocet = random.randint(10,30)
+
+        for d in range(pocet):
+            i = random.randint(1, 6)
+            i2 = random.randint(1, 6)
+
+            canvas.itemconfig(self.kocka1, image=self.zozkociek[i - 1])
+            canvas.itemconfig(self.kocka2, image=self.zozkociek[i2 - 1])
+            canvas.update()
+            canvas.after(100)
+            self.hod1 = i
+            self.hod2 = i2
+
+        self.mozes = 1
 
     def start(self):
         """Spusti Vykreslovanie hriacej plochy."""
@@ -223,7 +246,6 @@ class VypisAUlozenie(Program):
                 zeleznicax = -33
                 zeleznicay = -50
             canvas.create_rectangle(self.x, self.y, self.x + plusx, self.y + plusy)
-
             self.karticky[i]["odx"] = self.x
             self.karticky[i]["ody"] = self.y
             self.karticky[i]["dox"] = self.x + plusx
@@ -354,7 +376,8 @@ class VypisAUlozenie(Program):
             if x == self.pocethracov - 1:
                 canvas.delete(ram, ramram)
                 break
-
+        self.kocka()
+        super().zmena_hraca(self.hraci)
 
     def butons(self, ):
         """Spusti sa na konci vyberu hraca ako vyzva pre zacatie hry"""
@@ -368,13 +391,20 @@ class VypisAUlozenie(Program):
         for x in self.zoz:
             canvas.delete(x)
         self.buttx.place_forget()
+    def kocka(self):
+        """Polozi 2 sesky na miesto s kockami aby neboli prazdne"""
+        self.ramkocky = canvas.create_rectangle(820, 370, 880, 430, width=5)
+        self.ramkocky2 = canvas.create_rectangle(820, 470, 880, 530, width=5)
+        self.kocka1 = canvas.create_image(850, 400, image=self.kocka6)
+        self.kocka2 = canvas.create_image(850, 500, image=self.kocka6)
 
     def klik(self, event):
         """
         Funkcia zistuje na ktoru karticku sa kliklo
         a nasledne vytvori zvacsenu karticku s plnym popisom
+        alebo ked sa kliklo na karticky zavola funkciu roll ktorá
+        hodi kockami
          """
-        super().zmena_hraca(self.hraci)
         karta = None
         if self.ram is not None:
             for x in self.zoz:
@@ -382,6 +412,9 @@ class VypisAUlozenie(Program):
             self.buttx.place_forget()
             karta = None
         try:
+            if 820 < event.x < 880 and 370 < event.y < 530:
+                if self.mozes == 1:
+                    self.roll()
             for i in self.karticky["postuponost"]:
                 if self.karticky[i]["odx"] > self.karticky[i]["dox"]:
                     odx = self.karticky[i]["dox"]
@@ -505,8 +538,8 @@ class VypisAUlozenie(Program):
                 self.textnajom4d = canvas.create_text((490 - (len(str(self.karticky[karta]["4 domy "])) * 3)), 445,
                                                       text=f'{str(self.karticky[karta]["4 domy "])} $',
                                                       fill="black", font="Arial 15")
-                self.textnajomhotel = canvas.create_text((490 - (len(str(self.karticky[karta]["4 domy "])) * 3)), 475,
-                                                         text=f'{str(self.karticky[karta]["4 domy "])} $',
+                self.textnajomhotel = canvas.create_text((490 - (len(str(self.karticky[karta]["Hotel"])) * 3)), 475,
+                                                         text=f'{str(self.karticky[karta]["Hotel"])} $',
                                                          fill="black", font="Arial 15")
                 self.textstavba = canvas.create_text(400, 490,
                                                      text=f'Stavba {self.karticky[karta]["Cena domu"]} $ každý.',
@@ -538,8 +571,6 @@ class VypisAUlozenie(Program):
                       "Hrac4": {"meno": "Hrac 4", "postavicka": "", "karticky": [], "Money": 5000},
                       "Hrac5": {"meno": "Hrac 5", "postavicka": "", "karticky": [], "Money": 5000},
                       "Hrac6": {"meno": "Hrac 6", "postavicka": "", "karticky": [], "Money": 5000}, }
-
-
     def vyber_postavicky(self):
         """"
         Zobrazi galeriu postaviciek a moznostou vyberu postavicky.

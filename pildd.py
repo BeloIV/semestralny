@@ -22,3 +22,5 @@ for d in range(30):
     canvas.after(100)
 
 canvas.mainloop()
+
+
