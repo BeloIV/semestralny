@@ -1,4 +1,6 @@
 import tkinter
+import random
+
 from PIL import Image, ImageTk
 import json
 
@@ -7,15 +9,44 @@ class Program:
 
     def __init__(self):
         self.vypis = VypisAUlozenie()
+        self.auto = tkinter.PhotoImage(file=r"Images/auto.png")
+        self.bota = tkinter.PhotoImage(file=r"Images/bota.png")
+        self.furik = tkinter.PhotoImage(file=r"Images/furik.png")
+        self.klobuk = tkinter.PhotoImage(file=r"Images/klobuk.png")
+        self.lod = tkinter.PhotoImage(file=r"Images/lod.png")
+        self.macka = tkinter.PhotoImage(file=r"Images/macka.png")
+        self.dom = Image.open(r"Images/dom.png")
+        self.hotel = Image.open(r"Images/hotel.png")
         self.klik_na_karticku()
+
     def klik_na_karticku(self):
         """
         Funkcia caka na kliknutie na karticku aby ju mohla ukazat
         """
         canvas.bind('<ButtonPress>', self.vypis.klik)
+    def kocka(self):
+        tk_id = canvas.create_image(800, 800)
+        tk_id2 = canvas.create_image(800,800)
+        zoz = [tkinter.PhotoImage(file=f'Images/dice/roll{i}.png') for i in range(1, 7)]
+        i = 0
+        i2 = 0
+        for d in range(30):
+            i = random.randint(1, 6)
+            i2 = random.randint(1, 6)
+            canvas.itemconfig(tk_id, image=zoz[i - 1])
+            canvas.itemconfig(tk_id2, image=zoz[i2 - 1])
+            canvas.update()
+            canvas.after(100)
+
+    def zmena_hraca(self,hraci):
+        self.hraci = hraci
+        print(self.hraci)
+        self.hraci["Hrac1"]["Money"] += 50
+        self.ukaz()
+    def ukaz(self):
+        print(self.hraci)
 
 
-    
 class VypisAUlozenie(Program):
     def __init__(self):
         """
@@ -323,7 +354,7 @@ class VypisAUlozenie(Program):
             if x == self.pocethracov - 1:
                 canvas.delete(ram, ramram)
                 break
-        self.klik_na_karticku()
+
 
     def butons(self, ):
         """Spusti sa na konci vyberu hraca ako vyzva pre zacatie hry"""
@@ -343,27 +374,32 @@ class VypisAUlozenie(Program):
         Funkcia zistuje na ktoru karticku sa kliklo
         a nasledne vytvori zvacsenu karticku s plnym popisom
          """
+        super().zmena_hraca(self.hraci)
+        karta = None
         if self.ram is not None:
             for x in self.zoz:
                 canvas.delete(x)
             self.buttx.place_forget()
             karta = None
-        for i in self.karticky["postuponost"]:
-            if self.karticky[i]["odx"] > self.karticky[i]["dox"]:
-                odx = self.karticky[i]["dox"]
-                dox = self.karticky[i]["odx"]
-            else:
-                dox = self.karticky[i]["dox"]
-                odx = self.karticky[i]["odx"]
-            if self.karticky[i]["ody"] > self.karticky[i]["doy"]:
-                ody = self.karticky[i]["doy"]
-                doy = self.karticky[i]["ody"]
-            else:
-                doy = self.karticky[i]["doy"]
-                ody = self.karticky[i]["ody"]
-            if odx <= event.x < dox and ody <= event.y < \
-                    doy:
-                karta = i
+        try:
+            for i in self.karticky["postuponost"]:
+                if self.karticky[i]["odx"] > self.karticky[i]["dox"]:
+                    odx = self.karticky[i]["dox"]
+                    dox = self.karticky[i]["odx"]
+                else:
+                    dox = self.karticky[i]["dox"]
+                    odx = self.karticky[i]["odx"]
+                if self.karticky[i]["ody"] > self.karticky[i]["doy"]:
+                    ody = self.karticky[i]["doy"]
+                    doy = self.karticky[i]["ody"]
+                else:
+                    doy = self.karticky[i]["doy"]
+                    ody = self.karticky[i]["ody"]
+                if odx <= event.x < dox and ody <= event.y < \
+                        doy:
+                    karta = i
+        except:
+            pass
         if karta is not None and "Sanca" not in karta and "Pokladna" not in karta:
             if "Energeticke zavody" in karta or "Vodarne" in karta:
 
@@ -502,6 +538,8 @@ class VypisAUlozenie(Program):
                       "Hrac4": {"meno": "Hrac 4", "postavicka": "", "karticky": [], "Money": 5000},
                       "Hrac5": {"meno": "Hrac 5", "postavicka": "", "karticky": [], "Money": 5000},
                       "Hrac6": {"meno": "Hrac 6", "postavicka": "", "karticky": [], "Money": 5000}, }
+
+
     def vyber_postavicky(self):
         """"
         Zobrazi galeriu postaviciek a moznostou vyberu postavicky.
