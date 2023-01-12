@@ -4,7 +4,7 @@ from PIL import Image, ImageTk
 import json
 
 
-class Program():
+class Program:
 
     def __init__(self):
         """
@@ -135,7 +135,6 @@ class Program():
                 self.voda1 = ImageTk.PhotoImage(self.voda1)
                 self.voda2 = ImageTk.PhotoImage(self.voda2)
                 self.voda3 = ImageTk.PhotoImage(self.voda3)
-
         for cis, i in enumerate(self.karticky["postuponost"]):
             if kam == 1:
                 angl = -90
@@ -217,11 +216,7 @@ class Program():
             self.karticky[i]["dox"] = self.x + plusx
             self.karticky[i]["doy"] = self.y + plusy
             canvas.update()
-            canvas.after(100)
-            self.karticky[i]["indexod"] = self.x
-            self.karticky[i]["indexdo"] = self.x + plusx
-            self.karticky[i]["indexyod"] = self.y
-            self.karticky[i]["indexydo"] = self.y + plusy
+            canvas.after(10)
             if self.karticky[i]["Farba"] is not None:
                 canvas.create_rectangle(self.x + plusnafarbux, self.y + plusnafarbuy, self.x + farbax, self.y + farbay,
                                         fill=self.karticky[i]["Farba"])
@@ -294,15 +289,31 @@ class Program():
                                        fill="black")
                     canvas.create_text(self.x - 90, self.y + 40, text="Iba na ", angle=-90, font="Arial 18")
                     canvas.create_text(self.x - 50, self.y + 90, text="návšteve", font="Arial 18")
+                    self.karticky["Vezenie"]["odx"] = 10
+                    self.karticky["Vezenie"]["dox"] = 110
+                    self.karticky["Vezenie"]["ody"] = 700
+                    self.karticky["Vezenie"]["doy"] = 800
                 elif kam == 2:
                     canvas.create_text(self.x - 65, self.y + 35, text="Štart", font="Arial 35", angle=45)
                     canvas.create_text(self.x - 45, self.y + 50, text="Ziskávate 200$", font="Arial 15", angle=45)
+                    self.karticky["Start"]["odx"] = 700
+                    self.karticky["Start"]["dox"] = 800
+                    self.karticky["Start"]["ody"] = 700
+                    self.karticky["Start"]["doy"] = 800
                 elif kam == 3:
+                    self.karticky["Chod do vezenia"]["odx"] = 700
+                    self.karticky["Chod do vezenia"]["dox"] = 800
+                    self.karticky["Chod do vezenia"]["ody"] = 10
+                    self.karticky["Chod do vezenia"]["doy"] = 110
                     canvas.create_image(self.x + 50, self.y - 50, image=self.policajt, )
                     canvas.create_text(self.x + 75, self.y - 70, text="Choď do", angle=-45, font="Arial 18")
                     canvas.create_text(self.x + 25, self.y - 25, text="väzenia", angle=-45, font="Arial 18")
                 elif kam == 4:
                     canvas.create_image(self.x + 50, self.y - 50, image=self.wifi)
+                    self.karticky["Free wifi"]["odx"] = 10
+                    self.karticky["Free wifi"]["dox"] = 110
+                    self.karticky["Free wifi"]["ody"] = 10
+                    self.karticky["Free wifi"]["doy"] = 110
                 kam += 1
             else:
                 self.y += posuny
@@ -335,7 +346,7 @@ class Program():
             elif self.hraci[i]["postavicka"] == "klobuk":
                 postavicka = canvas.create_image(400, 420, image=self.klobuku)
             canvas.update()
-            canvas.after(1000)
+            canvas.after(10)
             canvas.delete(ram, text, text1, postavicka)
             if x == self.pocethracov - 1:
                 canvas.delete(ram, ramram)
@@ -500,29 +511,29 @@ class Program():
             if self.hraci[i]["postavicka"] == "auto":
                 self.autor = self.auto.resize((50, 50))
                 self.autoul = ImageTk.PhotoImage(self.autor)
-                self.autoposx = 740 + (cis * 35)
+                self.autoposx = 720 + (cis * 35)
                 self.autoposy = x
                 self.autopostavicka = canvas.create_image(self.autoposx, self.autoposy, image=self.autoul)
             elif self.hraci[i]["postavicka"] == "bota":
                 self.botar = self.bota.resize((50, 50))
                 self.botaul = ImageTk.PhotoImage(self.botar)
-                self.botapostavicka = canvas.create_image(740 + (cis * 35), x, image=self.botaul)
+                self.botapostavicka = canvas.create_image(720 + (cis * 35), x, image=self.botaul)
             elif self.hraci[i]["postavicka"] == "macka":
                 self.mackar = self.macka.resize((50, 50))
                 self.mackaul = ImageTk.PhotoImage(self.mackar)
-                self.mackapostavicka = canvas.create_image(740 + (cis * 35), x, image=self.mackaul)
+                self.mackapostavicka = canvas.create_image(720 + (cis * 35), x, image=self.mackaul)
             elif self.hraci[i]["postavicka"] == "lod":
                 self.lodr = self.lod.resize((50, 50))
                 self.lodul = ImageTk.PhotoImage(self.lodr)
-                self.lodpostavicka = canvas.create_image(740 + (cis * 35), x, image=self.lodul)
+                self.lodpostavicka = canvas.create_image(720 + (cis * 35), x, image=self.lodul)
             elif self.hraci[i]["postavicka"] == "furik":
                 self.furikr = self.furik.resize((50, 50))
                 self.furikul = ImageTk.PhotoImage(self.furikr)
-                self.furikpostavicka = canvas.create_image(740 + (cis * 35), x, image=self.furikul)
+                self.furikpostavicka = canvas.create_image(720 + (cis * 35), x, image=self.furikul)
             elif self.hraci[i]["postavicka"] == "klobuk":
                 self.klobukr = self.klobuk.resize((50, 50))
                 self.klobukul = ImageTk.PhotoImage(self.klobukr)
-                self.klobukpostavicka = canvas.create_image(740 + (cis * 35), x, image=self.klobukul)
+                self.klobukpostavicka = canvas.create_image(720 + (cis * 35), x, image=self.klobukul)
 
     def klik(self, event):
         """
@@ -541,22 +552,7 @@ class Program():
             if 820 < event.x < 880 and 370 < event.y < 530:
                 if self.mozes == 1:
                     self.roll()
-            for i in self.karticky["postuponost"]:
-                if self.karticky[i]["odx"] > self.karticky[i]["dox"]:
-                    odx = self.karticky[i]["dox"]
-                    dox = self.karticky[i]["odx"]
-                else:
-                    dox = self.karticky[i]["dox"]
-                    odx = self.karticky[i]["odx"]
-                if self.karticky[i]["ody"] > self.karticky[i]["doy"]:
-                    ody = self.karticky[i]["doy"]
-                    doy = self.karticky[i]["ody"]
-                else:
-                    doy = self.karticky[i]["doy"]
-                    ody = self.karticky[i]["ody"]
-                if odx <= event.x < dox and ody <= event.y < \
-                        doy:
-                    karta = i
+            karta = self.zisti_aka_to_je_karta(event.x, event.y)
         except:
             pass
         if karta is not None and "Sanca" not in karta and "Pokladna" not in karta:
@@ -681,6 +677,28 @@ class Program():
             self.buttx = tkinter.Button(text="X", command=self.vymaz, image=self.ximg)
             self.buttx.place(x=350, y=590)
 
+    def zisti_aka_to_je_karta(self, x, y):
+        """
+        zistuje podla zadanych suradnic na aku kartu klikol hrac
+        """
+        for i in self.karticky["postuponost2"]:
+            if self.karticky[i]["odx"] > self.karticky[i]["dox"]:
+                odx = self.karticky[i]["dox"]
+                dox = self.karticky[i]["odx"]
+            else:
+                dox = self.karticky[i]["dox"]
+                odx = self.karticky[i]["odx"]
+            if self.karticky[i]["ody"] > self.karticky[i]["doy"]:
+                ody = self.karticky[i]["doy"]
+                doy = self.karticky[i]["ody"]
+            else:
+                doy = self.karticky[i]["doy"]
+                ody = self.karticky[i]["ody"]
+            if odx <= x < dox and ody <= y < \
+                    doy:
+                karta = i
+                return karta
+
     def roll(self):
         """Hadze kockami a na konci ulozi ake cislo bolo na kockách"""
         self.mozes = 0
@@ -729,7 +747,7 @@ class Program():
         elif self.hraci[hrac]["postavicka"] == "furik":
             self.furikrr = self.furik.resize((100, 100))
             self.furikuloz = ImageTk.PhotoImage(self.furikrr)
-            self.ktoide = canvas.create_image(950, 450, image=self.furikul)
+            self.ktoide = canvas.create_image(950, 450, image=self.furikuloz)
         elif self.hraci[hrac]["postavicka"] == "klobuk":
             self.klobukre = self.klobuk.resize((100, 100))
             self.klobukuloz = ImageTk.PhotoImage(self.klobukre)
@@ -750,6 +768,75 @@ class Program():
         elif self.hraci[hrac]["postavicka"] == "klobuk":
             canvas.move(self.klobukpostavicka, x, y)
 
+    def zisti_kde_stoji(self, kto):
+        """Zisti kde stoji hrac a vrati suradnice"""
+        if self.hraci[self.zoznamhracov[kto]]["postavicka"] == "auto":
+            x, y = canvas.coords(self.autopostavicka)
+        elif self.hraci[self.zoznamhracov[kto]]["postavicka"] == "bota":
+            x, y = canvas.coords(self.botapostavicka)
+        elif self.hraci[self.zoznamhracov[kto]]["postavicka"] == "macka":
+            x, y = canvas.coords(self.mackapostavicka)
+        elif self.hraci[self.zoznamhracov[kto]]["postavicka"] == "lod":
+            x, y = canvas.coords(self.lodpostavicka)
+        elif self.hraci[self.zoznamhracov[kto]]["postavicka"] == "furik":
+            x, y = canvas.coords(self.furikpostavicka)
+        elif self.hraci[self.zoznamhracov[kto]]["postavicka"] == "klobuk":
+            x, y = canvas.coords(self.klobukpostavicka)
+        return x, y
+
+    def prirataj_ku_kolko_stoji(self, kto, operacia):
+        """
+        Meni hodnotu toho kolko hracov je na danej karticke a podla toho sa potom da zarovnavat
+        """
+        x, y = self.zisti_kde_stoji(kto)
+        karta = self.zisti_aka_to_je_karta(x, y)
+        self.karticky[karta]["kolkostoji"] += operacia
+
+    def zarovnaj_na_karticku(self, hrac, kto):
+        """
+        Vypocita zarovanie figurky bud na stred alebo trochu vedla lebo tam uuz niekto stoji
+        """
+        x, y = self.zisti_kde_stoji(kto)
+        self.prirataj_ku_kolko_stoji(kto, 1)
+        karta = self.zisti_aka_to_je_karta(x, y)
+        if self.karticky[karta]["kolkostoji"] == 1:
+            yk = ((self.karticky[karta]["doy"] - self.karticky[karta]["ody"]) / 2) + self.karticky[karta]["ody"]
+            xk = ((self.karticky[karta]["dox"] - self.karticky[karta]["odx"]) / 2) + self.karticky[karta]["odx"]
+            mx = x - xk
+            my = y - yk
+            self.posun(hrac, -mx, -my)
+        elif self.karticky[karta]["kolkostoji"] > 1:
+            kamto = self.karticky["postuponost2"].index(karta)
+            yk = ((self.karticky[karta]["doy"] - self.karticky[karta]["ody"]) / 2) + self.karticky[karta]["ody"]
+            xk = ((self.karticky[karta]["dox"] - self.karticky[karta]["odx"]) / 2) + self.karticky[karta]["odx"]
+            mx = x - xk
+            my = y - yk
+            if kamto <= 9 or 20 <= kamto <= 29:
+                if self.karticky[karta]["kolkostoji"] == 2:
+                    mx -= 20
+                elif self.karticky[karta]["kolkostoji"] == 3:
+                    mx += 20
+                elif self.karticky[karta]["kolkostoji"] == 4:
+                    my += 20
+                elif self.karticky[karta]["kolkostoji"] == 5:
+                    my -= 20
+                elif self.karticky[karta]["kolkostoji"] == 6:
+                    my += 23
+                    mx += 23
+            elif 9 < kamto <= 19 or 29 < kamto < 40:
+                if self.karticky[karta]["kolkostoji"] == 2:
+                    my -= 20
+                elif self.karticky[karta]["kolkostoji"] == 3:
+                    my += 20
+                elif self.karticky[karta]["kolkostoji"] == 4:
+                    mx += 20
+                elif self.karticky[karta]["kolkostoji"] == 5:
+                    mx -= 20
+                elif self.karticky[karta]["kolkostoji"] == 6:
+                    my += 23
+                    mx += 23
+            self.posun(hrac, -mx, -my)
+
 
 class Vypis(Program):
 
@@ -759,7 +846,6 @@ class Vypis(Program):
         a spusti funkciu na klikanie
         aj funkciu ktora vseto otvara
         """
-
         self.klik_na_karticku()
         super().__init__()
         self.openit()
@@ -801,7 +887,6 @@ class Vypis(Program):
             self.kto = 0
         else:
             self.kto += 1
-
         self.mozes = 1
         self.kto_ide(self.zoznamhracov[self.kto])
 
@@ -811,54 +896,63 @@ class Vypis(Program):
         a vypocita jeho posun podla toho kde ma pred posunom figurku
         """
         c = self.hod1 + self.hod2
-        if self.hraci[self.zoznamhracov[self.kto]]["postavicka"] == "auto":
-            x, y = canvas.coords(self.autopostavicka)
-        elif self.hraci[self.zoznamhracov[self.kto]]["postavicka"] == "bota":
-            x, y = canvas.coords(self.botapostavicka)
-        elif self.hraci[self.zoznamhracov[self.kto]]["postavicka"] == "macka":
-            x, y = canvas.coords(self.mackapostavicka)
-        elif self.hraci[self.zoznamhracov[self.kto]]["postavicka"] == "lod":
-            x, y = canvas.coords(self.lodpostavicka)
-        elif self.hraci[self.zoznamhracov[self.kto]]["postavicka"] == "furik":
-            x, y = canvas.coords(self.furikpostavicka)
-        elif self.hraci[self.zoznamhracov[self.kto]]["postavicka"] == "klobuk":
-            x, y = canvas.coords(self.klobukpostavicka)
+        x, y = super().zisti_kde_stoji(self.kto)
+        super().prirataj_ku_kolko_stoji(self.kto, -1)
         if 40 <= x <= 800 and 720 <= y <= 780:
             if x - c * 66 <= 66:
                 d = (x - 44) // 66
                 super().posun(self.zoznamhracov[self.kto], d * -66, 0)
-                super().posun(self.zoznamhracov[self.kto], 0, (c - d) * -66, )
+                if y - (c - d) * 66 <= 20:
+                    fx = (y - 20) // 66
+                    super().posun(self.zoznamhracov[self.kto], 0, fx * -66, )
+                    super().posun(self.zoznamhracov[self.kto], (c- d - fx) * 66, 0)
+                else:
+                    super().posun(self.zoznamhracov[self.kto], 0, (c - d) * -66, )
             else:
                 super().posun(self.zoznamhracov[self.kto], c * -66, 0)
         elif 40 <= x <= 100 and 40 <= y <= 720:
             if y - c * 66 <= 40:
                 d = (y - 44) // 66
                 super().posun(self.zoznamhracov[self.kto], 0, d * -66)
-                super().posun(self.zoznamhracov[self.kto], (c - d) * 66, 0)
+                if y+(c-d)*66 >800:
+                    fx = (780 - y)//66
+                    super().posun(self.zoznamhracov[self.kto], fx * 66, 0)
+                    super().posun(self.zoznamhracov[self.kto], 0,(c-d-fx) * -66, )
+                else:
+                    super().posun(self.zoznamhracov[self.kto], (c - d) * 66, 0)
             else:
                 super().posun(self.zoznamhracov[self.kto], 0, -c * 66)
         elif 40 < x < 760 and 40 < y < 100:
             if x + c * 66 > 780:
                 d = (780 - x) // 66
                 super().posun(self.zoznamhracov[self.kto], d * 66, 0)
-                super().posun(self.zoznamhracov[self.kto], 0, (c - d) * 66)
+                if y+(c-d)*66>800:
+                    fx = (780-x)//66
+                    super().posun(self.zoznamhracov[self.kto], 0, fx * 66)
+                    super().posun(self.zoznamhracov[self.kto],  (c - d-fx) * -66,0)
+                else:
+                    super().posun(self.zoznamhracov[self.kto], 0, (c - d) * 66)
             else:
                 super().posun(self.zoznamhracov[self.kto], c * 66, 0)
         elif 40 < x < 800 and 20 < y < 780:
             if y + c * 66 > 780:
                 d = (780 - y) // 66
                 super().posun(self.zoznamhracov[self.kto], 0, d * 66)
-                super().posun(self.zoznamhracov[self.kto], (c - d) * -66, 0)
+                if x+(c-d)*-66<10:
+                    fx = (x-20)//66
+                    super().posun(self.zoznamhracov[self.kto], fx * -66, 0)
+                    super().posun(self.zoznamhracov[self.kto],0, (c - d-fx) * -66)
+                else:
+                    super().posun(self.zoznamhracov[self.kto], (c - d) * -66, 0)
             else:
                 super().posun(self.zoznamhracov[self.kto], 0, c * 66)
-
+        super().zarovnaj_na_karticku(self.zoznamhracov[self.kto], self.kto)
         self.dalsi()
-
-
+        for i in self.karticky:
+            print(self.karticky[i])
 root = tkinter.Tk()
 root.attributes('-fullscreen', True)  # make main window full-screen
 canvas = tkinter.Canvas(root)
 canvas.pack(fill=tkinter.BOTH, expand=True, )
 x = Vypis()
-
 canvas.mainloop()
