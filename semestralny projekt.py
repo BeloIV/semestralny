@@ -21,6 +21,7 @@ class Program():
         self.zoznamhracov = []
         self.ktoide = None
 
+
     def openeverithing(self):
 
         """
@@ -761,6 +762,10 @@ class Vypis(Program):
         aj funkciu ktora vseto otvara
         """
 
+        def zmena_hraca(self, hraci):
+            self.hraci = hraci
+            print(self.hraci)
+            self.hraci["Hrac1"]["Money"] += 50
         self.klik_na_karticku()
         super().__init__()
         self.openit()
