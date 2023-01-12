@@ -1,26 +1,37 @@
-import random
-from PIL import Image, ImageTk
-import tkinter
+class A:
+    def __init__(self):
+        self.x = 4
+        self.y = 6
+        self.prinnt()
 
-import tkinter
+    def prinnt(self):
+        print(self.x,self.y)
 
-# moduly Image ani ImageTk tu nepotrebujeme
+    def plus(self,x):
+        x += 1
+        return x
 
-canvas = tkinter.Canvas(width=800, height=800)
-canvas.pack()
-tk_id = canvas.create_image(200, 150)
-tk_id2 = canvas.create_image(200, 200)
-zoz = [tkinter.PhotoImage(file=f'Images/dice/roll{i}.png') for i in range(1,7)]
-i = 0
-i2 = 0
-for d in range(30):
-    i = random.randint(1, 6)
-    i2 = random.randint(1, 6)
-    canvas.itemconfig(tk_id, image=zoz[i-1])
-    canvas.itemconfig(tk_id2, image=zoz[i2-1])
-    canvas.update()
-    canvas.after(100)
+class B (A):
+    def __init__(self):
+        self.x=5
+    def bp(self):
+        print(self.x)
 
-canvas.mainloop()
+class C(A):
+    def __init__(self):
+        self.x = 9
+        super().__init__()
+
+        print(self.x)
+        self.repp()
+    def cp(self):
+        print(self.x)
 
 
+    def repp(self):
+
+        for i in range(10):
+            self.x = super().plus(self.x)
+            print(self.x)
+
+x = C()
