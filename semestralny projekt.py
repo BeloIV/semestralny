@@ -10,6 +10,18 @@ class Program():
         """
         ulozi potrebne premenne .
         """
+
+
+
+
+class VypisAUlozenie(Program):
+    def __init__(self):
+        """
+        Otvori vsetky obrazky postaviciek karticiek a kociek
+        a spusti vstupne dialogove okno s vyberom moznosti hry.
+        """
+        self.kocka6 = tkinter.PhotoImage(file=f'Images/dice/roll6.png')
+        self.karticky = json.load(open('subor.txt'))
         self.pocethracovs = None
         self.meno = None
         self.prva = 1
