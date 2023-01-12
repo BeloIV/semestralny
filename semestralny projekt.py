@@ -846,7 +846,6 @@ class Vypis(Program):
         a spusti funkciu na klikanie
         aj funkciu ktora vseto otvara
         """
-
         self.klik_na_karticku()
         super().__init__()
         self.openit()
@@ -888,7 +887,6 @@ class Vypis(Program):
             self.kto = 0
         else:
             self.kto += 1
-
         self.mozes = 1
         self.kto_ide(self.zoznamhracov[self.kto])
 
@@ -952,12 +950,9 @@ class Vypis(Program):
         self.dalsi()
         for i in self.karticky:
             print(self.karticky[i])
-
-
 root = tkinter.Tk()
 root.attributes('-fullscreen', True)  # make main window full-screen
 canvas = tkinter.Canvas(root)
 canvas.pack(fill=tkinter.BOTH, expand=True, )
 x = Vypis()
-
 canvas.mainloop()
