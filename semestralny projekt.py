@@ -21,7 +21,6 @@ class Program():
         self.zoznamhracov = []
         self.ktoide = None
 
-
     def openeverithing(self):
 
         """
@@ -752,7 +751,6 @@ class Program():
             canvas.move(self.klobukpostavicka, x, y)
 
 
-
 class Vypis(Program):
 
     def __init__(self):
@@ -834,28 +832,28 @@ class Vypis(Program):
                 super().posun(self.zoznamhracov[self.kto], c * -66, 0)
         elif 40 <= x <= 100 and 40 <= y <= 720:
             if y - c * 66 <= 40:
-                d = (y-44) // 66
-                super().posun(self.zoznamhracov[self.kto],0, d * -66)
-                super().posun(self.zoznamhracov[self.kto],  (c - d) * 66,0)
+                d = (y - 44) // 66
+                super().posun(self.zoznamhracov[self.kto], 0, d * -66)
+                super().posun(self.zoznamhracov[self.kto], (c - d) * 66, 0)
             else:
                 super().posun(self.zoznamhracov[self.kto], 0, -c * 66)
-        elif 40< x < 760 and 40<y<100:
-            if x +c *66 >800:
-                d = (780-x) // 66
-                super().posun(self.zoznamhracov[self.kto],  d * 66,0)
-                super().posun(self.zoznamhracov[self.kto], 0,(c - d) * 66)
+        elif 40 < x < 760 and 40 < y < 100:
+            if x + c * 66 > 780:
+                d = (780 - x) // 66
+                super().posun(self.zoznamhracov[self.kto], d * 66, 0)
+                super().posun(self.zoznamhracov[self.kto], 0, (c - d) * 66)
             else:
                 super().posun(self.zoznamhracov[self.kto], c * 66, 0)
-        elif 40<x<800 and 20<y<780:
-            if y + c*66 > 800:
-                d = (780-y) // 66
-                super().posun(self.zoznamhracov[self.kto],0, d * 66)
-                super().posun(self.zoznamhracov[self.kto],  (c - d) * -66,0)
+        elif 40 < x < 800 and 20 < y < 780:
+            if y + c * 66 > 780:
+                d = (780 - y) // 66
+                super().posun(self.zoznamhracov[self.kto], 0, d * 66)
+                super().posun(self.zoznamhracov[self.kto], (c - d) * -66, 0)
             else:
                 super().posun(self.zoznamhracov[self.kto], 0, c * 66)
 
-
         self.dalsi()
+
 
 root = tkinter.Tk()
 root.attributes('-fullscreen', True)  # make main window full-screen
