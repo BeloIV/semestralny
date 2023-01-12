@@ -159,8 +159,7 @@ karticky = {
                          "4 domy ": 1700,
                          "Hotel": 2000,
                          "Farba": "darkblue"},
-    "Druha modra ulica": {"Nazov": "Obchodna "
-                                   "ulica",
+    "Druha modra ulica": {"Nazov": "Obchodna ulica",
                           "Nakupna cena": 350,
                           "Hypoteka": 175,
                           "Cena domu": 200,
@@ -385,6 +384,10 @@ karticky = {
                 "Ak vlastni obe nasobok": 10,
                 "Image": r"kohutik.png"
                 },
+    "Vezenie":{"Nazov": "Vezenie",
+    },
+    "Free wifi":{"Nazov":"Free wifi",},
+    "Chod do vezenia":{"Nazov":"Chod do vezenia"},
 }
 
 

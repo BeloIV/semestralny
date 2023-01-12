@@ -463,5 +463,14 @@
         "Ak vlastni 1 nasobok": 4,
         "Ak vlastni obe nasobok": 10,
         "Image": "kohutik.png"
+    },
+    "Vezenie": {
+        "Nazov": "Vezenie"
+    },
+    "Free wifi": {
+        "Nazov": "Free wifi"
+    },
+    "Chod do vezenia": {
+        "Nazov": "Chod do vezenia"
     }
 }
